@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/customer/customerHome.css">
+    <link rel="stylesheet" href="css/customer/index.css">
     <link rel="stylesheet" href="css/customer/customerStyle.css">
     <link rel="stylesheet" href="css/layout/layout.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -251,11 +251,15 @@
         <section id="category">
             <div id="category-heading">
                 <h2>All Products</h2>
+
+                <input type="text" name="search-bar" id="search-bar" placeholder="Search">
+
                 <button id="filter-btn">
                     <img src="./img/icon/filter.svg" alt="filter">
                     <p class="text-bold">Filter</p>
                 </button>
             </div>
+
             <div id="category-container">
                 <h3 id="category-list-notification">Sorry, we can't find any suitable products for you!</h3>
 
