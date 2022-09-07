@@ -19,6 +19,7 @@
     //     print_r($_SESSION['current_user']);
     //       echo '</pre>';
     // }
+    
 ?>
 
 <!DOCTYPE html>
