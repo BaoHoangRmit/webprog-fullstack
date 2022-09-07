@@ -1,0 +1,226 @@
+#customer-purchase{
+    width: 90%;
+    margin: 0 5%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#customer-purchase-info{
+    min-width: 500px;
+    max-width: 750px;
+    flex-grow: 1;
+}
+
+#customer-purchase-info-detail{
+    padding: 24px 28px;
+}
+
+.customer-purchase-info-detail-item{
+    padding: 12px 0;
+    display: flex;
+}
+
+.customer-purchase-info-detail-label{
+    display: inline-block;
+    width: 80px;
+    margin-right: 16px;
+}
+
+.customer-purchase-info-detail-input{
+    flex-grow: 1;
+    height: 36px;
+    border: 1px solid #343434;
+    padding: 0 12px;
+}
+
+#customer-purchase-info-detail-note{
+    display: flex;
+}
+
+#customer-purchase-info-detail-note .customer-purchase-info-detail-label{
+    margin-top: 12px;
+}
+
+#purchase-customer-note{
+    flex-grow: 1;
+    height: 136px;
+    border: 1px solid #343434;
+    padding: 12px;
+}
+
+#customer-purchase-payment{
+    width: 416px;
+    margin-left: 28px;
+}
+
+.customer-purchase-payment-method-option{
+    margin-top: 24px;
+    margin-left: 12px;
+
+    display: flex;
+    align-items: center;
+}
+
+.customer-purchase-payment-method-option-thumb{
+    height: 16px;
+    width: 16px;
+    margin-right: 24px;
+
+    border-radius: 50%;
+    border: 3px solid #343434;
+    background-color: #ffffff;
+
+    cursor: pointer;
+}
+
+#customer-purchase-payment-summary{
+    margin-top: 70px;
+}
+
+#purchase-payment-summary-contain{
+    margin-top: 24px;
+}
+
+#purchase-payment-summary-contain-product{
+    padding: 16px 24px;
+    padding-top: 0px;
+    margin-bottom: 16px;
+
+    border-bottom: 2px solid #999999;
+}
+
+.purchase-payment-summary-product-card{
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#purchase-payment-summary-contain-price{
+    padding: 0px 24px;
+}
+
+.purchase-payment-summary-price-card{
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#purchase-payment-summary-price-vat{
+    color: #666;
+
+    text-align: end;
+}
+
+#purchase-payment-btn-list{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#purchase-payment-btn-list button{
+    width: 100%;
+    margin-top: 24px;
+
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1100px){
+    #customer-purchase{  
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #customer-purchase-info{
+        min-width: 0;
+        max-width: 750px;
+        width: 100%;
+        flex-grow: 0;
+    }
+
+    #customer-purchase-info-heading, #customer-purchase-payment-method-heading, #customer-purchase-payment-summary-heading{
+        text-align: center;
+    }
+    
+    #customer-purchase-info-detail{
+        padding: 20px 24px;
+    }
+    
+    .customer-purchase-info-detail-item{
+        padding: 10px 0;
+    }
+    
+    .customer-purchase-info-detail-label{
+        width: 80px;
+        margin-right: 10px;
+    }
+    
+    .customer-purchase-info-detail-input{
+        flex-grow: 1;
+        height: 28px;
+        border: 1px solid #343434;
+        padding: 0 12px;
+    }
+    
+    #customer-purchase-info-detail-note .customer-purchase-info-detail-label{
+        margin-top: 10px;
+    }
+    
+    #purchase-customer-note{
+        height: 120px;
+        padding: 10px;
+    }
+    
+    #customer-purchase-payment{
+        width: 90%;
+        margin-left: 0;
+    }
+    
+    .customer-purchase-payment-method-option{
+        margin-top: 20px;
+        margin-left: 0px;
+
+        justify-content: center;
+    }
+    
+    .customer-purchase-payment-method-option-thumb{
+        margin-right: 18px;
+    }
+    
+    #customer-purchase-payment-summary{
+        margin-top: 40px;
+    }
+    
+    #purchase-payment-summary-contain{
+        margin-top: 20px;
+    }
+    
+    #purchase-payment-summary-contain-product{
+        padding: 14px 20px;
+        padding-top: 0px;
+        margin-bottom: 14px;
+    }
+    
+    .purchase-payment-summary-product-card{
+        margin-bottom: 8px;
+    }
+    
+    #purchase-payment-summary-contain-price{
+        padding: 0px 20px;
+    }
+    
+    #purchase-payment-btn-list button{
+        max-width: 450px;
+        margin-top: 20px;
+    }
+}
