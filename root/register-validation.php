@@ -3,7 +3,7 @@
   include_once 'file-control.php';
 
   function check_username($p1) {
-    $username_pattern = "/^([a-zA-Z0-9]){8,15}$/";
+    $username_pattern = "/^([a-zA-Z0-9 ]){8,15}$/";
     if (preg_match($username_pattern, $p1)) {
       return 1;
     } else return 0;

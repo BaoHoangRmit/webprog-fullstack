@@ -37,6 +37,7 @@
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 echo "<a href='#'>My Account</a>" ;
             } else {
+                echo "<a href='#'>Register</a>" ;
                 echo "<a href='login-page.php'>Login</a>" ;
             }
         ?>
