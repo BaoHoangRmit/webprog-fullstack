@@ -1,3 +1,12 @@
+body{
+    position: relative;
+}
+
+.body-modal{
+    height: 100vh;
+    overflow-y: hidden;
+}
+
 #product-breadcrumb{
     width: 90%;
     margin: 0 5%;
@@ -34,6 +43,53 @@
     .product-breadcrumb-sep{
         font-size: 11px;
     }
+}
+
+#product-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #00000080;
+}
+
+#product-popup-card{
+    width: 80%;
+    max-width: 900px;
+    height: 400px;
+    padding: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+}
+
+#product-popup-card-text h2{
+    text-align: center;
+}
+
+#product-popup-card-button{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#product-popup-card button{
+    width: 50%;
+    margin: 60px;
+    margin-bottom: 0;
 }
 
 #product-detail{
@@ -88,6 +144,25 @@
     #product-breadcrumb{
         margin-bottom: 18px;
     }
+    
+    #product-popup-card{
+        width: 90%;
+        padding: 40px;
+    }
+
+    #product-popup-card-button{
+        width: 100%;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #product-popup-card button{
+        width: 70%;
+        margin-top: 32px;
+    }
 
     #product-detail-image{
         max-width: 360px;
@@ -126,6 +201,40 @@
 @media only screen and (max-width: 576px){
     #product-breadcrumb{
         margin-bottom: 16px;
+    }
+
+    #product-popup{
+        position: absolute;
+        top: 0;
+        left: 0;
+    
+        width: 100%;
+        height: 100vh;
+        overflow-y: hidden;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        background-color: #00000080;
+    }
+    
+    #product-popup-card{
+        width: 80%;
+        max-width: 900px;
+        height: 400px;
+        padding: 60px;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        background-color: #ffffff;
+    }
+    
+    #product-popup-card-text h2{
+        text-align: center;
     }
 
     #product-detail-image{
