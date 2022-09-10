@@ -9,6 +9,7 @@
         <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 echo "<a href='my-account.php'>My Account</a>" ;
+                echo "<a href='customerCart.php'>Cart</a>" ;
             } else {
                 echo "<a href='#'>Register</a>" ;
                 echo "<a href='login-page.php'>Login</a>" ;

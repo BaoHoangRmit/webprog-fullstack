@@ -16,14 +16,14 @@
 
     <title>Customer | Product</title>
 </head>
-<body>
+<body id="customerDetail">
     <header></header>
     
     <main>
         <nav id="product-breadcrumb">
             <ul id="product-breadcrumb-list">
                 <li id="product-breadcrumb-home" class="product-breadcrumb-item">
-                    <a href="./customerHome.html" class="text-h4">Home</a>
+                    <a href="./index.php" class="text-h4">Home</a>
                 </li>
 
                 <li class="product-breadcrumb-sep">
@@ -47,8 +47,8 @@
                         <p class="text-bold">Close</p>
                     </button>
 
-                    <button id="product-popup-home" class="bg-btn">
-                        <p class="text-bold">Home</p>
+                    <button id="product-popup-home" class="bg-btn" onClick="location.href='customerCart.php'">
+                        <p class="text-bold">Cart</p>
                     </button>
                 </div>
             </div>
@@ -57,13 +57,15 @@
         <section id="product-detail">
             <div id="product-detail-container">
                 <figure id="product-detail-image">
-                    <img src="./img/itemTest.png" alt="itemTest">
+                    <img id="product-detail-image-img" src="./img/itemTest.png" alt="itemTest">
                 </figure>
     
                 <div id="product-detail-info">
                     <h2 id="product-detail-info-name" >Misfit Ring</h2>
 
-                    <p id="product-detail-info-price" class="text-bold">$45454.00</p>
+                    <p id="product-detail-info-vendor" class="text-bold">Vendor</p>
+
+                    <p id="product-detail-info-price" class="text-bold">$120</p>
 
                     <p id="product-detail-info-desc" class="text-para">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a aliquet sem. Nunc vestibulum, diam eget tincidunt facilisis, elit nisi aliquam risus, at pharetra purus mi eget ante. Morbi ipsum elit, volutpat eget laoreet quis, accumsan vel ante. Donec non magna sed turpis finibus rutrum non quis est. Integer tincidunt turpis gravida sodales interdum. Donec dui metus, hendrerit quis arcu non, rhoncus condimentum justo. Etiam et odio bibendum, pretium massa quis, commodo sapien, unc vestibulum.

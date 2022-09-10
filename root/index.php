@@ -38,8 +38,6 @@
     <link rel="stylesheet" href="css/customer/index.css">
     <link rel="stylesheet" href="css/customer/customerStyle.css">
     <link rel="stylesheet" href="css/layout/layout.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
 
     <!-- JS script for onclick functions -->
     <script>
@@ -80,13 +78,13 @@
         function viewDetail(id){
             const urlParams = new URLSearchParams(window.location.search);
             urlParams.set('productID', id);
-            location.href = `./customerDetail.html?${urlParams}`;
+            location.href = `./customerDetail.php?${urlParams}`;
         }
     </script>
 
     <title>Customer | Home</title>
 </head>
-<body>
+<body id = "customerIndex">
     
     <?php 
         include_once 'layout/header.php';
@@ -249,10 +247,32 @@
 
         <section id="update">
             <h2>Sign Up For EMAIL Updates</h2>
-            <form action="#" id="update-email">
+            <form id="update-email" onsubmit="return false;">
                 <input type="email" id="emailUpdate" name="emailUpdate" placeholder="Email">
-                <input type="submit" name="update-submit" id="update-submit" value="Go">
+                <button id="update-submit"><p class="text-para">Go</p></button>
             </form>
+        </section>
+
+        <section id = "filter-category">
+            <div id = "filter-category-info">
+                <form id = "filter-category-info-form" action="#">
+                    <p class="text-para filter-category-info-heading">Sort by</p>
+                    <input type="radio" id = "category-sort-price" name = "filter-category-sort">
+                    <label for="category-sort-price" class="text-para">Price</label>
+
+                    <input type="radio" id = "category-sort-name" name = "filter-category-sort">
+                    <label for="category-sort-name" class="text-para">Name</label>
+
+                    <input type="radio" id = "category-sort-newest" name = "filter-category-sort">
+                    <label for="category-sort-price" class="text-para">Newest</label>
+                </form>
+                <div id = "filter-category-btn-list">
+                    <button class="border-btn" id="close-filter-btn"><p class="text-para">Close</p></button>
+                        
+                    <input type="submit" name ="submit-filter-btn" id="submit-filter-btn" class="bg-btn text-para" value="Go" form="filter-category-info-form">
+                </div>
+            </div>
+            <div id = "filter-category-background"></div>
         </section>
 
         <section id="category">
@@ -277,11 +297,11 @@
                 <h3 id="category-list-notification">Sorry, we can't find any suitable products for you!</h3>
 
                 <div id="category-list" class="list-vertical">
-                    <div id="6" class="card" onclick="viewDetail(6)">
+                    <div id="6" class="card" onclick="viewDetail('itemFS6')">
                         <figure class="card-image">
                             <img src="./img/itemTest.png" alt="itemTest">
                             <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
+                                <button class="view-detail-btn border-btn" onclick="viewDetail('itemFS6')">
                                     <p class="text-bold">View Details</p>
                                 </button>
                             </div>
