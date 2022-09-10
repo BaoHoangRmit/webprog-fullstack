@@ -25,10 +25,8 @@
 			echo $error;
 			
 			} else {
-			// header('location: users.php');
 			}
 	}	else {
-		// header('location: login-page.php');
 		echo $error;
 	}
 
@@ -36,11 +34,13 @@
 		$_SESSION['loggedin'] = true;
 		if (isset($_SESSION['current_user']['role']) && $_SESSION['current_user']['role'] == 'customer') {	
 			header('location: index.php');
-			// exit();		
+			die();		
 		} elseif (isset($_SESSION['current_user']['role']) && $_SESSION['current_user']['role'] == 'vendor') {
 			header('location: vendor-item-page.php');
+			die();
 		} elseif (isset($_SESSION['current_user']['role']) && $_SESSION['current_user']['role'] == 'shipper') {
 			header('location: shipper-page.php');
+			die();
 		}
 	}
 ?>

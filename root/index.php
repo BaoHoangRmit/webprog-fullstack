@@ -1,5 +1,28 @@
 <?php
     session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        // echo 'ok' . 'login van return $_SESSION[current_user] voi mang rong -> van chuyen my account khi an quay lai sau khi dang nhap sai mkhau';
+        // echo '<br>';
+        // echo 'test above function again but for now have fixed';
+        // if (isset($_SESSION['current_user'])) {
+		//     echo '<pre>';
+		//     print_r($_SESSION['current_user']);
+		//   	echo '</pre>';
+		// }
+    } else {
+        // echo 'not ok';
+    }
+    // if (isset($_SESSION['current_user'])) {
+    //     echo '<pre>';
+    //     print_r($_SESSION['current_user']);
+    //       echo '</pre>';
+    // } else {
+    //     echo 'no cookie';
+    // }
+    include_once 'product-file-control.php';
+
+    $_SESSION['allProducts'] = read_product_file();
 ?>
 
 <!DOCTYPE html>
@@ -277,26 +300,42 @@
                 <h3 id="category-list-notification">Sorry, we can't find any suitable products for you!</h3>
 
                 <div id="category-list" class="list-vertical">
-                    <div id="6" class="card" onclick="viewDetail('itemFS6')">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn" onclick="viewDetail('itemFS6')">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                        $length = count($_SESSION['allProducts']);
+                        for ($i=0; $i < $length; $i++) { 
+                            $product = $_SESSION['allProducts'][$i];
+                            foreach ($product as $key => $value) {
+                                $id = strval($product['id']);
+                                $name = $product['name'];
+                                $price = strval($product['price']);
+                                $img = $product['img'];
+                                $desc = $product['desc'];
+                                $ven = $product['ven'];
+                            }
+                            echo "<div class=\"card\" onclick=\"viewDetail('itemFS" . $id . "')\">";
+                            echo "<figure class='card-image'>";
+                            echo "<img src='" . $img . "' alt='itemTest'>";
+                            echo "<div class='card-image-overlay'>";
+                            echo "<button class='view-detail-btn border-btn' onclick=\"viewDetail('itemFS". $id .  "')\">";
+                            echo "<p class='text-bold'>View Details</p>";
+                            echo "</button>";
+                            echo '</div>';
+                            echo '</figure>';
+
+                            echo "<div class='card-info'>";
+                            echo "<div class='card-info-detail'>";
+                            echo "<p class='text-sub card-info-detail-vendor'>" . $ven . "</p>";
+                            echo "<p class='text-para card-info-detail-name'>" . $name . "</p>";
+                            echo '</div>';
+                            echo "<div class='card-info-price'>";
+                            echo "<p class='text-bold'>$" . $price . "</p>";
+                            echo '</div>';
+                            echo '</div>';
+
+                            echo '</div>';
+                        }
+                        
+                    ?>
 
                     <div id="7" class="card">
                         <figure class="card-image">
