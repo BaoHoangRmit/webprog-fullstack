@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* Set up */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+.title {
+    text-align: center;
+    margin: 30px 0;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 70%;
+    font-style: italic;
+}
+
+.row {
+    margin: 0 50px;
+}
+
+.column {
+    float: left;
+    width: 33%;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.card {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 2px;
+}
+
+.card-header {
+    font-weight: 500;
+    margin: 10px 20px;
+}
+
+.product-img {
+    display: block;
+    max-width: 40%;
+    min-width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-text {
+    text-align: center;
+}
+
+.product-name {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.description {
+    text-align: justify;
+    padding: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.add-btn {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin: 30px auto;
+}
+
+.add-btn:hover {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid; 
+    background-color: white;
+    color: black;
+}
+
+@media screen and (max-width: 1023px) {
+    .column {
+        width: 50%;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}

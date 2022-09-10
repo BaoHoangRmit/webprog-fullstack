@@ -1,8 +1,6 @@
 <?php
-
-  // include_once 'file-control.php';
+  session_start();
   include_once 'register-validation.php';
-  
   
   if (isset($_POST['register'])) {
 
@@ -13,43 +11,12 @@
         $error = 'You have not uploaded your picture file';
     } else {
       $role = 'customer';
-      // $register_id = round(microtime(true));
 
       // --- UPLOAD IMG ---
       $target_dir = "img/customer_img/";
       $target_file = $target_dir . basename($_FILES["cusImg"]["name"]);
       $uploadOk = 1;
       $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-      // Check if image file is a actual image or fake image
-      // if(isset($_POST["register"])) {
-      //   $check = getimagesize($_FILES["cusImg"]["tmp_name"]);
-      //   if($check !== false) {
-      //     echo "File is an image - " . $check["mime"] . ".";
-      //     $uploadOk = 1;
-      //   } else {
-      //     echo "File is not an image.";
-      //     $uploadOk = 0;
-      //   }
-      // }
-
-      // Check if file already exists
-      // if (file_exists($target_file)) {
-      //   echo "Sorry, file already exists.";
-      //   $uploadOk = 0;
-      // }
-
-      // Check file size > 10MB
-      // if ($_FILES["cusImg"]["size"] > 10_000_000) {
-      //   echo "Sorry, your file is too large.";
-      //   $uploadOk = 0;
-      // }
-
-      // Allow certain file formats
-      // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-      //   echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
-      //   $uploadOk = 0;
-      // }
 
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk == 0) {
@@ -62,6 +29,7 @@
         $_POST['cusName'] != '' && $_POST['cusAddress'] != '') {
 
           if (check_unique_all(strval($_POST['cusUsername']), 'username')) {
+            unset($_SESSION['errorUsername']);
             if (check_username(strval($_POST['cusUsername']))) {
               if (check_password(strval($_POST['cusPassword']))) {
                 if (check_other(strval($_POST['cusName']))) {
@@ -95,7 +63,13 @@
                       // upload the file with new name
                       if (move_uploaded_file($_FILES["cusImg"]["tmp_name"], $new_target_file)) {
                         // echo "The file ". htmlspecialchars( basename( $_FILES["cusImg"]["name"])). " has been uploaded.";
-                        save_user_file();
+                        if (save_user_file()) {
+                          $_SESSION['registered'] = 'You have not been registered';
+                          header('location: index.php');
+                        } else {
+                          unset($_SESSION['registered']);
+                          header('location: customer-register-page.php');
+                        }
 
                       } else {
                         $error = "Sorry, there was an error uploading your file.";
@@ -117,8 +91,10 @@
             } else {
               $error = 'wrong username pattern';
             }
-          } else {
+          } else {      
             $error = 'This username has been taken - choose another';
+            $_SESSION['errorUsername'] = $error;
+            header('location: customer-register-page.php');
           }
         
         } else {

@@ -1,5 +1,5 @@
 <?php
-    include_once 'login.php';
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +30,7 @@
         </div>
         <!-- Showing active orders -->
         <div class="container">
+            <!-- The order -->
             <div class="card mx-5 rounded-0 my-4">
                 <h5 class="card-header">
                     <div class="row">
@@ -45,86 +46,60 @@
                         <li class="list-group-item">Address: </li>
                     </ul>
                     <div class="text-end">
-                        <button type="button" class="btn btn-dark rounded-0" id="myBtn">View Detail</button>
+                        <button type="button" class="btn btn-dark rounded-0" id="Btn#123456" onclick="openModal('Modal#123456')">View Detail</button>
                     </div>
 
                 </div>
             </div>
-            <div class="card mx-5 rounded-0 my-4">
-                <h5 class="card-header">
-                    <div class="row">
-                        <div class="col-md-10">ID: #555555</div>
-                        <div class="col-md-2">Status: <span class="text-success">Active</span></div>
-                    </div>
-                </h5>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Distribution Hub</li>
-                        <li class="list-group-item">Created at: 08-03-2022 18:22</li>
-                        <li class="list-group-item">Customer:</li>
-                        <li class="list-group-item">Address: </li>
-                    </ul>
-                    <div class="text-end">
-                        <button type="button" class="btn btn-dark rounded-0" id="myBtn">View Detail</button>
-                    </div>
 
-                </div>
-            </div>
-        </div>
+                <!-- Order's Modal -->
+                <div id="Modal#123456" class="modal">
 
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Order #123456</h4>
+                            <span class="close" onclick="closeModal('Modal#123456')">&times;</span>
+                        </div>
 
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Order #123456</h4>
-                    <span class="close">&times;</span>
-                </div>
-
-                <div class="modal-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <label>Customer: </label>#Name - #Phone
-                        </li>
-                        <li class="list-group-item">
-                            <label>Location: </label>Location
-                        </li>
-                        <li class="list-group-item">
-                            <label>Shopping cart </label>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card my-3 rounded-0">
-                                            <div class="row g-0">
-                                                <div class="col-5 col-sm-4 my-2">
-                                                    <img src="../img/iphone.png" class="img-fluid" alt="item-image">
-                                                </div>
-                                                <div class="col-7 col-sm-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">iPhone</h5>
-                                                        <p class="card-text">Price: <small
-                                                                class="text-muted">$200</small></p>
-                                                        <p class="card-text">Quantity: 2</p>
-                                                    </div>
+                        <div class="modal-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <label>Customer: </label>#Name - #Phone
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Location: </label>Location
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Shopping cart </label>
+                                    <div class="card my-3 rounded-0">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-12 my-2">
+                                                <img src="../img/iphone.png" class="card-img" alt="item-image">
+                                            </div>
+                                            <div class="col-lg-8 col-md-12">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">iPhone</h5>
+                                                    <p class="card-text">Price <small class="text-muted">$200</small></p>
+                                                    <p class="card-text"><span class="description">The iPhone is a smartphone made by Apple that combines a computer, iPod, 
+                                                    digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system, 
+                                                    and in 2021 when the iPhone 13 was introduced, it offered up to 1 TB of storage and a 12-megapixel camera.</span></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                                </li>
+                            </ul>
+                        </div>
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark rounded-0">Cancel Order</button>
-                    <button type="button" class="btn btn-dark rounded-0">Delivered</button>
-                </div>
-            </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark rounded-0">Cancel Order</button>
+                            <button type="button" class="btn btn-dark rounded-0">Delivered</button>
+                        </div>
+                    </div>
 
-        </div>
+                </div>
     </main>
 
     <?php

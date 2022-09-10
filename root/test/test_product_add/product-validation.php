@@ -10,7 +10,8 @@ function check_product_name($p1) {
 }
 
 function check_product_price($p1) {
-    $product_price_pattern = "/^[+]?\d+([.]\d+)?$/";
+    // product_price_pattern = "/^[+]?\d+([.]\d+)?$/";
+    $product_price_pattern = "/^[+]?\d+\.([0-9][0-9])$/";
     if (preg_match($product_price_pattern, strval($p1))) {
         return 1;
     } else return 0;
