@@ -146,6 +146,8 @@
 }
 
 .list-horizontal{
+    max-width: 1400px;
+    margin: 0 auto;
     position: relative;
 
     width: 100%;
@@ -168,6 +170,8 @@
     display: inline-block;
     width: 300px;
     height: 400px;
+
+    cursor: pointer;
 }
 
 #suggestion-list .card{
@@ -282,7 +286,6 @@
     background-color: #ffffff;
     padding: 12px;
     width: 240px;
-    max-width: 100%;
     border: 1px solid #343434;
 
     font-family: 'Open Sans', sans-serif;
@@ -358,6 +361,46 @@
     align-items: flex-end;
 }
 
+#category-heading-search{
+    position: relative;
+
+    height: 38px;
+}
+
+#search-bar{
+    background-color: #ffffff;
+    padding: 8px;
+    padding-right: 40px;
+    width: 300px;
+    max-width: 100%;
+    border: 1px solid #343434;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+#category-heading-search-icon{
+    position: absolute;
+    top: 1px;
+    right: 0;
+
+    height: 36px;
+    width: 36px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+#category-heading-search-icon img{
+    height: 20px;
+    width: 20px;
+    margin: 0;
+}
+
 #filter-btn{
     padding: 6px 24px;
     border-radius: 4px;
@@ -426,12 +469,22 @@
     #filter-btn{
         padding: 4px 18px;
     }
+
+    #category-heading-search{
+        margin: 20px 0;
+    }
+
+    #category-heading{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
 }
 
 @media only screen and (max-width: 576px){
-    #filter-btn{
+    /* #filter-btn{
         padding: 1px 10px;
-    }
+    } */
 
     .list-vertical{
         grid-template-columns: repeat(1, 1fr);
@@ -440,5 +493,29 @@
 
     #category-extended-btn{
         margin-top: 16px;
+    }
+
+    #category-heading-search{
+        max-width: 240px;
+        width: 100%;
+    }
+
+    #search-bar{
+        padding: 8px;
+        padding-right: 36px;
+        width: 100%;
+    
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #category-heading-search-icon{   
+        height: 32px;
+        width: 32px;
+    }
+    
+    #category-heading-search-icon img{
+        height: 14px;
+        width: 14px;
     }
 }

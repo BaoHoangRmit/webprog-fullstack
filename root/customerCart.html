@@ -11,15 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/customer/customerCart.css">
-    <link rel="stylesheet" href="css/customer/customerStyle.css">
+    <link rel="stylesheet" href="./css/customer/customerCart.css">
+    <link rel="stylesheet" href="./css/customer/customerStyle.css">
 
     <title>Customer | Cart</title>
 </head>
-<body>
+<body id="customerCart">
     <header></header>
     
     <main>
+        <section id="cart-popup">
+            <div id="cart-popup-card">
+                <div id="customer-popup-card-text">
+                    <h2>A product successfully added to your shopping cart</h2>
+                </div>
+
+                <div id="cart-popup-card-button">
+                    <button id="cart-popup-close" class="border-btn">
+                        <p class="text-bold">Close</p>
+                    </button>
+
+                    <button id="cart-popup-confirm" class="bg-btn">
+                        <p class="text-bold">Confirm</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <section id="customer-cart">
             <h2 id="customer-cart-heading">Shopping Bag</h2>
             <div id="cart-container">

@@ -16,7 +16,7 @@
 
     <title>Customer | Product</title>
 </head>
-<body>
+<body id="customerDetail">
     <header></header>
     
     <main>
@@ -47,8 +47,8 @@
                         <p class="text-bold">Close</p>
                     </button>
 
-                    <button id="product-popup-home" class="bg-btn">
-                        <p class="text-bold">Home</p>
+                    <button id="product-popup-home" class="bg-btn" onClick="location.href='customerCart.html'">
+                        <p class="text-bold">Cart</p>
                     </button>
                 </div>
             </div>
@@ -57,11 +57,13 @@
         <section id="product-detail">
             <div id="product-detail-container">
                 <figure id="product-detail-image">
-                    <img src="./img/itemTest.png" alt="itemTest">
+                    <img id="product-detail-image-img" src="./img/itemTest.png" alt="itemTest">
                 </figure>
     
                 <div id="product-detail-info">
                     <h2 id="product-detail-info-name" >Misfit Ring</h2>
+
+                    <p id="product-detail-info-vendor" class="text-bold">Vendor</p>
 
                     <p id="product-detail-info-price" class="text-bold">$45454.00</p>
 
