@@ -19,6 +19,7 @@
     //     print_r($_SESSION['current_user']);
     //       echo '</pre>';
     // }
+    
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +76,12 @@
             showSlides(slideIndex);
         }
         setInterval(autoSlides,5000);
+
+        function viewDetail(id){
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('productID', id);
+            location.href = `./customerDetail.html?${urlParams}`;
+        }
     </script>
 
     <title>Customer | Home</title>
@@ -252,7 +259,13 @@
             <div id="category-heading">
                 <h2>All Products</h2>
 
-                <input type="text" name="search-bar" id="search-bar" placeholder="Search">
+                <div id="category-heading-search">
+                    <input type="text" name="search-bar" id="search-bar" placeholder="Search">
+
+                    <div id="category-heading-search-icon">
+                        <img src="img/icon/Search.png" alt="magnifying glass">
+                    </div>
+                </div>
 
                 <button id="filter-btn">
                     <img src="./img/icon/filter.svg" alt="filter">
@@ -264,7 +277,7 @@
                 <h3 id="category-list-notification">Sorry, we can't find any suitable products for you!</h3>
 
                 <div id="category-list" class="list-vertical">
-                    <div id="6" class="card">
+                    <div id="6" class="card" onclick="viewDetail(6)">
                         <figure class="card-image">
                             <img src="./img/itemTest.png" alt="itemTest">
                             <div class="card-image-overlay">

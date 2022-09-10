@@ -1,26 +1,28 @@
 <?php
-    session_start();
-    include_once 'login.php';
-    
 
-    if ($_SESSION['loggedin'] == true) {
-        echo 'ok';
+    // include_once 'login.php';
+    session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        // echo 'ok' . 'login van return $_SESSION[current_user] voi mang rong -> van chuyen my account khi an quay lai sau khi dang nhap sai mkhau';
+        // echo '<br>';
+        // echo 'test above function again but for now have fixed';
         if (isset($_SESSION['current_user'])) {
 		    echo '<pre>';
 		    print_r($_SESSION['current_user']);
 		  	echo '</pre>';
 		}
     } else {
-        echo 'not ok';
+        // echo 'not ok';
     }
 
-    if (isset($_SESSION['current_user'])) {
-        echo '<pre>';
-        print_r($_SESSION['current_user']);
-          echo '</pre>';
-    } else {
-        echo 'no cookie';
-    }
+    // if (isset($_SESSION['current_user'])) {
+    //     echo '<pre>';
+    //     print_r($_SESSION['current_user']);
+    //       echo '</pre>';
+    // } else {
+    //     echo 'no cookie';
+    // }
 ?>
 
 <!-- Page header -->
@@ -35,6 +37,7 @@
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 echo "<a href='#'>My Account</a>" ;
             } else {
+                echo "<a href='#'>Register</a>" ;
                 echo "<a href='login-page.php'>Login</a>" ;
             }
         ?>
