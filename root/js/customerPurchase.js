@@ -60,7 +60,7 @@ function renderOrder(){
             tmpOrder += `
                 <div class="purchase-payment-summary-product-card">
                     <p class="text-para purchase-payment-summary-product-card-name">${tmpValue[1]}</p>
-                    <p class="text-para purchase-payment-summary-product-card-price">${tmpValue[3]}</p>
+                    <p class="text-para purchase-payment-summary-product-card-price">$${tmpValue[3]}</p>
                 </div>
             `;
         }

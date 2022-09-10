@@ -72,3 +72,34 @@ function displayExtendedCards(){
 }
 
 extendedBtn.addEventListener("click", displayExtendedCards);
+
+let customerIndex = document.getElementById("customerIndex");
+let overlay = document.getElementById("filter-category");
+let closeFilterBtn = document.getElementById("close-filter-btn");
+let submitFilterBtn = document.getElementById("submit-filter-btn");
+let filterBtn = document.getElementById("filter-btn");
+let overlayBg = document.getElementById("filter-category-background");
+
+function closeOverlay(){
+    overlay.style.display = "none";
+    customerIndex.classList.remove("body-modal");
+}
+
+function openOverlay(){
+    overlay.style.display = "flex";
+    customerIndex.classList.add("body-modal");
+}
+
+filterBtn.addEventListener("click", openOverlay);
+closeFilterBtn.addEventListener("click", closeOverlay);
+submitFilterBtn.addEventListener("click", closeOverlay);
+overlayBg.addEventListener("click", closeOverlay);
+
+let updateBtn = document.getElementById("update-submit");
+let updateEmailInput = document.getElementById("emailUpdate");
+
+function removeInput(){
+  updateEmailInput.value = "";
+}
+
+updateBtn.addEventListener("click", removeInput);

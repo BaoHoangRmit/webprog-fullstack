@@ -30,6 +30,7 @@
 		    fputcsv($fp, $user);
 		  }
 		}
+		return 0;
 	}
 
 	function read_user_file() {

@@ -1,25 +1,5 @@
 <?php
-    // include_once 'login.php';
-
-    // session_start();
-
-    // if ($_SESSION['loggedin']) {
-    //     // echo 'ok';
-    //     if (isset($_SESSION['current_user'])) {
-	// 	    echo '<pre>';
-	// 	    print_r($_SESSION['current_user']);
-	// 	  	echo '</pre>';
-	// 	}
-    // } else {
-    //     echo 'not ok';
-    // }
-
-    // if (isset($_SESSION['current_user'])) {
-    //     echo '<pre>';
-    //     print_r($_SESSION['current_user']);
-    //       echo '</pre>';
-    // }
-    
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +64,7 @@
 
     <title>Customer | Home</title>
 </head>
-<body>
+<body id = "customerIndex">
     
     <?php 
         include_once 'layout/header.php';
@@ -247,10 +227,32 @@
 
         <section id="update">
             <h2>Sign Up For EMAIL Updates</h2>
-            <form action="#" id="update-email">
+            <form id="update-email" onsubmit="return false;">
                 <input type="email" id="emailUpdate" name="emailUpdate" placeholder="Email">
-                <input type="submit" name="update-submit" id="update-submit" value="Go">
+                <button id="update-submit"><p class="text-para">Go</p></button>
             </form>
+        </section>
+
+        <section id = "filter-category">
+            <div id = "filter-category-info">
+                <form id = "filter-category-info-form" action="#">
+                    <p class="text-para filter-category-info-heading">Sort by</p>
+                    <input type="radio" id = "category-sort-price" name = "filter-category-sort">
+                    <label for="category-sort-price" class="text-para">Price</label>
+
+                    <input type="radio" id = "category-sort-name" name = "filter-category-sort">
+                    <label for="category-sort-name" class="text-para">Name</label>
+
+                    <input type="radio" id = "category-sort-newest" name = "filter-category-sort">
+                    <label for="category-sort-price" class="text-para">Newest</label>
+                </form>
+                <div id = "filter-category-btn-list">
+                    <button class="border-btn" id="close-filter-btn"><p class="text-para">Close</p></button>
+                        
+                    <input type="submit" name ="submit-filter-btn" id="submit-filter-btn" class="bg-btn text-para" value="Go" form="filter-category-info-form">
+                </div>
+            </div>
+            <div id = "filter-category-background"></div>
         </section>
 
         <section id="category">

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/layout/layout.css">
 	<link rel="stylesheet" href="css/customer/customerStyle.css">
-	<link rel="stylesheet" href="css/register/registerCustomer.css">
+	<link rel="stylesheet" href="css/register/register.css">
 
 
     <script defer src="js/register/registerCustomer.js"></script>
@@ -21,6 +25,7 @@
 	<title>CUSTOMER REGISTER</title>
 </head>
 <body>
+
 	<?php include_once 'layout/header.php'; ?>
 
 	<main>
@@ -38,17 +43,29 @@
 		
 		</form> -->
 
-		<p>ERROR AFTER validate js then cannot parse php</p>
-
 		<div class="register-form">
 			<form id="register-form" method="post" action="customer-register.php" enctype="multipart/form-data">
 			<!-- <form id="register-form" method="post" onsubmit="return setAction(this)" enctype="multipart/form-data"> -->
-				<h1>Customer Sign Up</h1>
+				<h1>Sign Up</h1>
+				<h2>Customer</h2>
+				<div class='error'>
+					<?php 
+						if (isset($_SESSION['registered'])) {
+							echo '<p>' . $_SESSION['registered'] . '</p>';
+						}
+					?>
+				</div>
 
 				<div class="input-control">
 					<label for="cusUsername">Username</label>
 					<input type='text' id="cusUsername" name="cusUsername">
-					<div class="error"></div>
+					<div class="error">
+						<?php 
+							if (isset($_SESSION['errorUsername'])) {
+								echo '<p>' . $_SESSION['errorUsername'] . '</p>';
+							}
+						?>
+					</div>
 				</div>
 
 				<div class="input-control">
@@ -80,37 +97,9 @@
 					<div class="error"></div>
 				</div>
 
-				<input type="submit" name="register" value="Register"></input>
+				<button type="submit" name="register">Register</button>
 			</form>
 		</div>
-		
-
-		<!-- <div class="register-form">
-			<form id="form" action="/">
-				<h1>Registration</h1>
-				<div class="input-control">
-					<label for="username">Username</label>
-					<input id="username" name="username" type="text">
-					<div class="error"></div>
-				</div>
-				<div class="input-control">
-					<label for="email">Email</label>
-					<input id="email" name="email" type="text">
-					<div class="error"></div>
-				</div>
-				<div class="input-control">
-					<label for="password">Password</label>
-					<input id="password"name="password" type="password">
-					<div class="error"></div>
-				</div>
-				<div class="input-control">
-					<label for="password2">Password again</label>
-					<input id="password2"name="password2" type="password">
-					<div class="error"></div>
-				</div>
-				<button type="submit">Sign Up</button>
-			</form>
-		</div> -->
 	</main>
 	
 	<?php include_once 'layout/footer.html'; ?>
