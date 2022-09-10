@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if ($_SESSION['current_user']['role'] == 'customer') {
+        header('location: index.php');
+    } elseif ($_SESSION['current_user']['role'] == 'vendor') {
+        header('location: vendor-item-page.php');
+    } elseif ($_SESSION['current_user']['role'] == 'shipper') {
+        header('location: shipper-page.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
