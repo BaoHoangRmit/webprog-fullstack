@@ -49,6 +49,12 @@
                     <input type="text" id="purchase-customer-location" class="text-para customer-purchase-info-detail-input" name="purchase-customer-location" placeholder="E.g: Handi Resco Building, 521 Kim Ma, Ha Noi">
                 </div>
 
+                <div id="customer-purchase-info-detail-cartId" class="customer-purchase-info-detail-item">
+                    <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-cartId">CartID</label>
+
+                    <input type="text" id="purchase-customer-cartId" class="text-para customer-purchase-info-detail-input" name="purchase-customer-cartId" disabled>
+                </div>
+
                 <div id="customer-purchase-info-detail-note" class="customer-purchase-info-detail-item">
                     <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-note">Note</label>
 
@@ -108,7 +114,7 @@
                         <p class="text-bold">Purchase Orders</p>
                     </button>
 
-                    <button class="customer-purchase-select-btn border-btn" onClick="location.href='customerHome.html#category'">
+                    <button class="customer-purchase-select-btn border-btn" onClick="location.href='index.php#category'">
                         <p class="text-bold">Select More</p>
                     </button>
                 </div>

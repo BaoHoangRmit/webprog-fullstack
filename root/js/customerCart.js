@@ -34,8 +34,10 @@ let renderCart = function(){
         if(loopCnt == cnt){
             break;
         }
-        itemIdList.push(key);
-        loopCnt++;
+        if(key.includes('itemFS')){
+            itemIdList.push(key);
+            loopCnt++;
+        }
     }
 
     if(itemIdList.length == 0){

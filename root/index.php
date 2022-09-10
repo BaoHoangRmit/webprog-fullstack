@@ -38,8 +38,6 @@
     <link rel="stylesheet" href="css/customer/index.css">
     <link rel="stylesheet" href="css/customer/customerStyle.css">
     <link rel="stylesheet" href="css/layout/layout.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
 
     <!-- JS script for onclick functions -->
     <script>
@@ -80,7 +78,7 @@
         function viewDetail(id){
             const urlParams = new URLSearchParams(window.location.search);
             urlParams.set('productID', id);
-            location.href = `./customerDetail.html?${urlParams}`;
+            location.href = `./customerDetail.php?${urlParams}`;
         }
     </script>
 
@@ -277,11 +275,11 @@
                 <h3 id="category-list-notification">Sorry, we can't find any suitable products for you!</h3>
 
                 <div id="category-list" class="list-vertical">
-                    <div id="6" class="card" onclick="viewDetail(6)">
+                    <div id="6" class="card" onclick="viewDetail('itemFS6')">
                         <figure class="card-image">
                             <img src="./img/itemTest.png" alt="itemTest">
                             <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
+                                <button class="view-detail-btn border-btn" onclick="viewDetail('itemFS6')">
                                     <p class="text-bold">View Details</p>
                                 </button>
                             </div>

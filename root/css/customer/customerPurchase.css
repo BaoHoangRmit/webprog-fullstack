@@ -35,6 +35,10 @@
     padding: 0 12px;
 }
 
+#purchase-customer-cartId{
+    background-color: #a8a6a6;
+}
+
 #customer-purchase-info-detail-note{
     display: flex;
 }
