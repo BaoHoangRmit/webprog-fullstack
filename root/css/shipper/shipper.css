@@ -55,19 +55,6 @@ ul {
     border-radius: 0px;
 }
 
-.description {
-    font-size: 70%;
-    font-style: italic;
-}
-
-.card-img {
-    display: block;
-    max-width: 205px;
-    min-width: 170px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* The Close Button */
 .close {
     color: #aaaaaa;

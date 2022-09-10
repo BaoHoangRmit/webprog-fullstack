@@ -1,23 +1,6 @@
 const registerForm = document.getElementById('register-form');
-const cusUsername = document.getElementById('cusUsername');
-const cusPassword = document.getElementById('cusPassword');
-const cusPassword2 = document.getElementById('cusPassword2');
-const cusName = document.getElementById('cusName');
-const cusAddress = document.getElementById('cusAddress');
-
-// function setAction(registerForm) {
-//     registerForm.action = "customer-register.php";
-// }
-
-// const email = document.getElementById('email');
-// const password = document.getElementById('password');
-// const password2 = document.getElementById('password2');
-
-// registerForm.addEventListener('submit', e => {
-//     e.preventDefault();
-
-//     validateInputs();
-// });
+const logUsername = document.getElementById('logUsername');
+const logPassword = document.getElementById('logPassword');
 
 registerForm.addEventListener('submit', e => {
     let checkValidate = validateInputs();
@@ -51,26 +34,6 @@ const setSuccess = element => {
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
 };
-
-// const isValidEmail = email => {
-//     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(String(email).toLowerCase());
-// }
-
-const isValidUsername = username => {
-    const reUsername = /^([a-zA-Z0-9 ]){8,15}$/;
-    return reUsername.test(String(username));
-}
-
-const isValidPassword = password => {
-    const rePassword = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])(.{8,20})$/;
-    return rePassword.test(String(password));
-}
-
-const isValidOther = other => {
-    const reOther = /^(.{5,})$/;
-    return reOther.test(String(other));
-}
 
 const validateInputs = () => {
     const cusUsernameValue = cusUsername.value;

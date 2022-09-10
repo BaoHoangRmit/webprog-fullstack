@@ -1,5 +1,5 @@
 <?php
-    include_once 'login.php';
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -92,19 +92,23 @@
                         </li>
                         <li class="list-group-item">
                             <label>Shopping cart </label>
-                            <div class="card my-3 rounded-0">
+                            <div class="container">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-12 my-2">
-                                        <img src="../img/iphone.png" class="card-img" alt="item-image">
-                                    </div>
-                                    <div class="col-lg-8 col-md-12">
-                                        <div class="card-body">
-                                            <h5 class="card-title">iPhone</h5>
-                                            <p class="card-text">Price <small class="text-muted">$200</small></p>
-                                            <p class="card-text">Quantity: 2</p>
-                                            <p class="card-text"><span class="description">The iPhone is a smartphone made by Apple that combines a computer, iPod, 
-                                            digital camera and cellular phone into one device with a touchscreen interface. The iPhone runs the iOS operating system, 
-                                            and in 2021 when the iPhone 13 was introduced, it offered up to 1 TB of storage and a 12-megapixel camera.</span></p>
+                                    <div class="col">
+                                        <div class="card my-3 rounded-0">
+                                            <div class="row g-0">
+                                                <div class="col-5 col-sm-4 my-2">
+                                                    <img src="../img/iphone.png" class="img-fluid" alt="item-image">
+                                                </div>
+                                                <div class="col-7 col-sm-8">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">iPhone</h5>
+                                                        <p class="card-text">Price: <small
+                                                                class="text-muted">$200</small></p>
+                                                        <p class="card-text">Quantity: 2</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
