@@ -550,11 +550,6 @@ body{
     cursor: pointer;
 }
 
-.body-modal{
-    height: 100vh;
-    overflow-y: hidden;
-}
-
 #filter-category-info{
     position: relative;
     z-index: 50;

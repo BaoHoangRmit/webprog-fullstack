@@ -32,7 +32,49 @@
     
     <main>
         <nav id="product-breadcrumb">
-            <ul id="product-breadcrumb-list">
+        <?php 
+            $length = count($_SESSION['allProducts']);
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $url_components = parse_url($actual_link);
+            parse_str($url_components['query'], $params);
+
+            for ($i=0; $i < $length; $i++) { 
+                $product = $_SESSION['allProducts'][$i];
+                foreach ($product as $key => $value) {
+                    $check1 = 0;
+                    $real_id = "itemFS{$value}";
+                    if ($key == 'id' && $real_id == $params['productID']) {
+                        $name = $product['name'];
+                        $check1 = 1;
+                        break;
+                    } else {
+                        continue;
+                    }
+                }
+
+                if ($check1 == 1) {
+                    break;
+                } else {
+                    continue;
+                } 
+            }    
+
+            echo '
+                <ul id="product-breadcrumb-list">
+                    <li id="product-breadcrumb-home" class="product-breadcrumb-item">
+                        <a href="./index.php" class="text-h4">Home</a>
+                    </li>
+
+                    <li class="product-breadcrumb-sep">
+                        <span>&#10095;</span>
+                    </li>
+
+                    <li id="product-breadcrumb-item" class="product-breadcrumb-item">
+                        <p class="text-h4">'.$name.'</p>
+                    </li>
+                </ul>'
+        ?>
+            <!-- <ul id="product-breadcrumb-list">
                 <li id="product-breadcrumb-home" class="product-breadcrumb-item">
                     <a href="./index.php" class="text-h4">Home</a>
                 </li>
@@ -44,7 +86,7 @@
                 <li id="product-breadcrumb-item" class="product-breadcrumb-item">
                     <p class="text-h4">Product</p>
                 </li>
-            </ul>
+            </ul> -->
         </nav>
 
         <section id="product-popup">

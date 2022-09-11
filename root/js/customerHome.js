@@ -103,3 +103,12 @@ function removeInput(){
 }
 
 updateBtn.addEventListener("click", removeInput);
+
+let submitSearch = document.getElementById("category-heading-search-icon");
+let searchForm = document.getElementById("category-heading-search");
+
+function submitSearchForm(){
+  searchForm.submit();
+}
+
+submitSearch.addEventListener("click", submitSearchForm);

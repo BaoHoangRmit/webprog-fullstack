@@ -1,3 +1,11 @@
+header{
+    margin-bottom: 60px;
+}
+
+footer{
+    margin-top: 60px !important;
+}
+
 #customer-purchase{
     width: 90%;
     margin: 0 5%;
@@ -20,6 +28,12 @@
 .customer-purchase-info-detail-item{
     padding: 12px 0;
     display: flex;
+    flex-wrap: wrap;
+}
+
+.customer-purchase-info-detail-item .customer-input-warning{
+    width: 100%;
+    color: #e85146;
 }
 
 .customer-purchase-info-detail-label{

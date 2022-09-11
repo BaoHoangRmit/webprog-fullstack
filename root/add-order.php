@@ -1,10 +1,8 @@
 <?php  
 
-if ($_POST['purchase']) {
-    echo $_POST['purchaseName'] . '<br>';
-    echo $_POST['purchaseAddress'] . '<br>';
-    echo $_POST['purchaseCartId'] . '<br>';
-}
-
+echo $_POST['purchase-customer-name'] . '<br>';
+echo $_POST['purchase-customer-phone'] . '<br>';
+echo $_POST['purchase-customer-cartId'] . '<br>';
+echo $_POST['purchase-customer-note'] . '<br>';
 
 ?>
