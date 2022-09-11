@@ -38,6 +38,7 @@
     <!-- <link rel="stylesheet" href="css/customer/index.css"> -->
     <link rel="stylesheet" href="css/customer/customerStyle.css">
     <link rel="stylesheet" href="css/layout/layout.css">
+    <link rel="stylesheet" href="css/register/register-page.css">
 
     <title>Customer | Home</title>
 </head>
@@ -48,23 +49,26 @@
     ?>
 
     <main>
-        <div>
-            <a href="customer-register-page.php" class="text-muted">Customer Register Page</a>
+
+        <div class="title">
+            <p>You want to register as?</p>
         </div>
-        <div>
-        <a href="vendor-register-page.php" class="text-muted">Vendor Register Page</a>
-        </div>
-        <div>
-        <a href="shipper-register-page.php" class="text-muted">Shipper Register Page</a>
+
+        <div class="container">
+            <div>
+                <a href="customer-register-page.php" class="a-link">Customer Register Page</a>
+            </div>
+            <div>
+            <a href="vendor-register-page.php" class="a-link">Vendor Register Page</a>
+            </div>
+            <div>
+            <a href="shipper-register-page.php" class="a-link">Shipper Register Page</a>
+            </div>
         </div>
     </main>
     
     <?php
         include_once 'layout/footer.html';
     ?>
-
-    <!-- JS -->
-    <script src="./js/customerMain.js"></script>
-    <script src="./js/customerHome.js"></script>
 </body>
 </html>

@@ -57,7 +57,7 @@
 					<div class="error"></div>
 				</div>
 
-				<button type="submit" name="login">Login</button>
+				<button type="submit" name="login" style="cursor: pointer;">Login</button>
 			</form>
 		</div>
 	</main>

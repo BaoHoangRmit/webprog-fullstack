@@ -3,7 +3,7 @@ const shipUsername = document.getElementById('shipUsername');
 const shipPassword = document.getElementById('shipPassword');
 const shipPassword2 = document.getElementById('shipPassword2');
 
-registerForm.addEventtListener('submit', e => {
+registerForm.addEventListener('submit', e => {
     let checkValidate = validateInputs();
     if (checkValidate == 1) {
         
@@ -44,6 +44,8 @@ const validateInputs = () => {
     const shipUsernameValue = shipUsername.value;
     const shipPasswordValue = shipPassword.value;
     const shipPassword2Value = shipPassword2.value;
+    console.log(shipPassword2);
+    console.log(shipPassword2Value);
     let check = 0;
 
     if(shipUsernameValue === '') {

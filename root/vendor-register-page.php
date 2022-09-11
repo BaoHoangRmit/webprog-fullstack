@@ -93,7 +93,7 @@
 					</div>
 				</div>
 
-				<button type="submit" name="register">Register</button>
+				<button type="submit" name="register" style="cursor: pointer;">Register</button>
 			</form>
 		</div>
 	</main>		
