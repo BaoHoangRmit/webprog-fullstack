@@ -78,7 +78,16 @@
                       }
                     ?>
                     <div class="col-6 mb-3">
-                      <button type="button" class="btn btn-outline-dark rounded-0 btn-sm mb-5">Logout</button>
+                      <?php 
+                        $destroySessionFlag = filter_input(INPUT_POST, 'destroySession');
+                        if ($destroySessionFlag == 1) {
+                            session_destroy();
+                        }
+                      ?>
+                      <form action="" method="POST">
+                          <input type="hidden" name="destroySession" value="1">
+                          <button type="submit" class="btn btn-outline-dark rounded-0 btn-sm mb-5">Logout</button>
+                      </form>
                     </div>
                 </div>
               </div>

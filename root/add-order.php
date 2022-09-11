@@ -63,17 +63,10 @@
         'orderName' => $_POST['purchase-customer-name'],
         'orderAddress' => $_POST['purchase-customer-location'],
         'orderStatus' => 'active',
-        'orderProductId' => $productIds,
+        // 'orderProductId' => $productIds,
         'createdTime' => date('d-m-Y h:i:s'),
     ];
 
-    $_SESSION['orders'][] = $order;
-
-    // if (isset($_SESSION['orders'])) {
-    //     save_order_file();
-    //     echo '<pre>';
-    //     print_r($_SESSION['orders']);
-    //     echo '</pre>';
-    // }
+    // $_SESSION['orders'][] = $order;
 
 ?>
