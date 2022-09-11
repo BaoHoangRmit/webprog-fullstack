@@ -1,3 +1,17 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        if ($_SESSION['current_user']['role'] == 'shipper') {
+            header('location: shipper-page.php');
+        } elseif ($_SESSION['current_user']['role'] == 'vendor') {
+            header('location: vendor-item-page.php');
+        }
+    } else {
+       header('location: login-page.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +27,14 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/customer/customerCart.css">
     <link rel="stylesheet" href="./css/customer/customerStyle.css">
+    <link rel="stylesheet" href="css/layout/layout.css">
 
     <title>Customer | Cart</title>
 </head>
 <body id="customerCart">
-    <header></header>
+    <?php 
+        include_once 'layout/header.php';
+    ?>
     
     <main>
         <section id="cart-popup">
@@ -88,7 +105,9 @@
         </button>
     </main>
 
-    <footer></footer>
+    <?php
+        include_once 'layout/footer.html';
+    ?>
 
     <!-- JS -->
     <script src="./js/customerMain.js"></script>

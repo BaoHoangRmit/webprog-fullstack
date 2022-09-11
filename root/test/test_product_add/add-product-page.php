@@ -1,22 +1,9 @@
 <?php 
     session_start();
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        // echo 'ok' . 'login van return $_SESSION[current_user] voi mang rong -> van chuyen my account khi an quay lai sau khi dang nhap sai mkhau';
-        // echo '<br>';
-        // echo 'test above function again but for now have fixed';
-        if (isset($_SESSION['current_user'])) {
-		    echo '<pre>';
-		    print_r($_SESSION['current_user']);
-		  	echo '</pre>';
-		}
-
-        if ($_SESSION['current_user']['role'] == 'vendor') {
-		    echo 'nice';    
-		} else {
-            echo 'not nice';
-        }
+    if ($_SESSION['current_user']['role'] == 'vendor') {
+        echo 'nice';    
     } else {
-        echo 'not ok';
+        echo 'not nice';
     }
 ?>
 

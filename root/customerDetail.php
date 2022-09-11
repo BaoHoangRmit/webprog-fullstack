@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+
+    include_once 'product-file-control.php';
+
+    $_SESSION['allProducts'] = read_product_file();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +21,60 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/customer/customerDetail.css">
     <link rel="stylesheet" href="css/customer/customerStyle.css">
+    <link rel="stylesheet" href="css/layout/layout.css">
 
     <title>Customer | Product</title>
 </head>
 <body id="customerDetail">
-    <header></header>
+    <?php 
+        include_once 'layout/header.php';
+    ?>
     
     <main>
         <nav id="product-breadcrumb">
-            <ul id="product-breadcrumb-list">
+        <?php 
+            $length = count($_SESSION['allProducts']);
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $url_components = parse_url($actual_link);
+            parse_str($url_components['query'], $params);
+
+            for ($i=0; $i < $length; $i++) { 
+                $product = $_SESSION['allProducts'][$i];
+                foreach ($product as $key => $value) {
+                    $check1 = 0;
+                    $real_id = "itemFS{$value}";
+                    if ($key == 'id' && $real_id == $params['productID']) {
+                        $name = $product['name'];
+                        $check1 = 1;
+                        break;
+                    } else {
+                        continue;
+                    }
+                }
+
+                if ($check1 == 1) {
+                    break;
+                } else {
+                    continue;
+                } 
+            }    
+
+            echo '
+                <ul id="product-breadcrumb-list">
+                    <li id="product-breadcrumb-home" class="product-breadcrumb-item">
+                        <a href="./index.php" class="text-h4">Home</a>
+                    </li>
+
+                    <li class="product-breadcrumb-sep">
+                        <span>&#10095;</span>
+                    </li>
+
+                    <li id="product-breadcrumb-item" class="product-breadcrumb-item">
+                        <p class="text-h4">'.$name.'</p>
+                    </li>
+                </ul>'
+        ?>
+            <!-- <ul id="product-breadcrumb-list">
                 <li id="product-breadcrumb-home" class="product-breadcrumb-item">
                     <a href="./index.php" class="text-h4">Home</a>
                 </li>
@@ -33,7 +86,7 @@
                 <li id="product-breadcrumb-item" class="product-breadcrumb-item">
                     <p class="text-h4">Product</p>
                 </li>
-            </ul>
+            </ul> -->
         </nav>
 
         <section id="product-popup">
@@ -56,7 +109,53 @@
 
         <section id="product-detail">
             <div id="product-detail-container">
-                <figure id="product-detail-image">
+                <?php 
+                    $length = count($_SESSION['allProducts']);
+                    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    $url_components = parse_url($actual_link);
+                    parse_str($url_components['query'], $params);
+                    // echo $params['productID'];
+
+
+                    for ($i=0; $i < $length; $i++) { 
+                        $product = $_SESSION['allProducts'][$i];
+                        foreach ($product as $key => $value) {
+                            $check1 = 0;
+                            $real_id = "itemFS{$value}";
+                            if ($key == 'id' && $real_id == $params['productID']) {
+                                $id = strval($product['id']);
+                                $name = $product['name'];
+                                $price = strval($product['price']);
+                                $img = $product['img'];
+                                $desc = $product['desc'];
+                                $ven = $product['ven'];
+                                $check1 = 1;
+                                break;
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        if ($check1 == 1) {
+                            break;
+                        } else {
+                            continue;
+                        } 
+                    }
+                    
+                    echo "<figure id='product-detail-image'>";
+                    echo "<img id='product-detail-image-img' src='" . $img . "' alt='" . $name . "'>";
+                    echo "</figure>";
+                    echo "<div id='product-detail-info'>";
+                    echo "<h2 id='product-detail-info-name'>" . $name . "</h2>";
+                    echo "<p id='product-detail-info-vendor' class='text-bold'>" . $ven . "</p>";
+                    echo "<p id='product-detail-info-price' class='text-bold'>$" . $price . "</p>";
+                    echo "<p id='product-detail-info-desc' class='text-para'>" . $desc . "</p>";
+                    echo "<button class='add-cart-btn border-btn'><p class='text-bold'>Add to Cart</p></button>";
+                    echo "</div>";
+
+                ?>
+                <!-- <figure id="product-detail-image">
                     <img id="product-detail-image-img" src="./img/itemTest.png" alt="itemTest">
                 </figure>
     
@@ -72,7 +171,7 @@
                     </p>
 
                     <button class="add-cart-btn border-btn"><p class="text-bold">Add to Cart</p></button>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -106,7 +205,9 @@
         </button>
     </main>
 
-    <footer></footer>
+    <?php
+        include_once 'layout/footer.html';
+    ?>
 
     <!-- JS -->
     <script src="./js/customerMain.js"></script>

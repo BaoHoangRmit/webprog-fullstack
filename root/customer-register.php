@@ -5,6 +5,7 @@
   if (isset($_POST['register'])) {
 
     $error = '';
+    $_SESSION['registered'] = '';
 
     if(!file_exists($_FILES['cusImg']['tmp_name']) 
       || !is_uploaded_file($_FILES['cusImg']['tmp_name'])) {
@@ -64,10 +65,10 @@
                       if (move_uploaded_file($_FILES["cusImg"]["tmp_name"], $new_target_file)) {
                         // echo "The file ". htmlspecialchars( basename( $_FILES["cusImg"]["name"])). " has been uploaded.";
                         if (save_user_file()) {
-                          $_SESSION['registered'] = 'You have not been registered';
+                          unset($_SESSION['registered']);
                           header('location: index.php');
                         } else {
-                          unset($_SESSION['registered']);
+                          $_SESSION['registered'] = 'You have not been registered';
                           header('location: customer-register-page.php');
                         }
 

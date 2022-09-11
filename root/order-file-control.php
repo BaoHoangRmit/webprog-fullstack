@@ -1,18 +1,12 @@
 <?php 
 
-function save_product_file() {
+function save_order_file() {
     // point to another file
-    $file_name = 'data/products.csv';
+    $file_name = 'data/orders.csv';
     $fp = fopen($file_name, 'a');
 
-    // no img
-    // $fields = ['username', 'password', 'name', 'address', 'created_time'];
-
-    // have id
-    // $fields = ['id','role', 'username', 'password', 'img', 'name', 'address', 'hub', 'createdTime'];
-
     // no id
-    $fields = ['id', 'name', 'price', 'img', 'desc', 'createdTime'];
+    $fields = ['id', 'name', 'price', 'img', 'desc', 'ven', 'createdTime'];
 
     $fpr = fopen($file_name, 'r');     
     $first = fgetcsv($fpr);
@@ -30,9 +24,10 @@ function save_product_file() {
         fputcsv($fp, $user);
       }
     }
+    return 1;
 }
 
-function read_product_file() {
+function read_order_file() {
     $file_name = 'data/products.csv';
     $fp = fopen($file_name, 'r');
 

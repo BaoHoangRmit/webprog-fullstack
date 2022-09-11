@@ -2,9 +2,12 @@ body{
     position: relative;
 }
 
-.body-modal{
-    height: 100vh;
-    overflow-y: hidden;
+header{
+    margin-bottom: 60px;
+}
+
+footer{
+    margin-top: 60px !important;
 }
 
 #product-breadcrumb{
