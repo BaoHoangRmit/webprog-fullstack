@@ -1,1 +1,6 @@
-orderId,orderHub,orderName,orderAddress,orderStatus,createdTime
+orderId,orderHub,orderName,orderAddress,orderStatus,orderProductId,createdTime
+1662900720,name3,"Bao Hoang","address 1",active,"1662813650,1662894141","11-09-2022 12:52:00"
+1662900740,name3,"Vinh Khue","address 2",active,"1662813650,1662894141","11-09-2022 12:52:19"
+1662900905,name3,"Thien Co ","address 3",active,"1662813650,1662894141","11-09-2022 12:55:04"
+1662901134,name1,"username 1",address4,active,1662813650,"11-09-2022 12:58:54"
+1662901199,name3,"username 1",address4,active,1662813650,"11-09-2022 12:59:58"
