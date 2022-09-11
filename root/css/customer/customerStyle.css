@@ -12,6 +12,12 @@ body{
     font-family: 'Open Sans', sans-serif;
     color: #343434;
 }
+
+.body-modal{
+    height: 100vh;
+    overflow-y: hidden;
+    padding-right: 15px;
+}
   
 img{
     max-width: 100%;

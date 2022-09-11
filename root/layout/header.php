@@ -1,6 +1,6 @@
 <!-- Page header -->
 <header>
-    <a href="#" class="logo"><img src="../img/lazada_logo.png" width="25"></a>
+    <a href="../index.php" class="logo"><img src="../img/lazada_logo.png" width="25"></a>
     <div class="header-right">
         <a href="#" class="text-muted">About</a>
         <a href="#" class="text-muted">Privacy</a>

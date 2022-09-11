@@ -141,6 +141,46 @@
         <section id="suggestion">
             <h2>Daily Discover</h2>
             <div id="suggestion-list" class="list-horizontal">
+
+                <?php 
+                    $length = count($_SESSION['allProducts']);
+                    if($length > 5){
+                        $length = 5;
+                    }
+                    for ($i=0; $i < $length; $i++) { 
+                        $product = $_SESSION['allProducts'][$i];
+                        foreach ($product as $key => $value) {
+                            $id = "itemFS" . strval($product['id']);
+                            $name = $product['name'];
+                            $price = strval($product['price']);
+                            $img = $product['img'];
+                            $desc = $product['desc'];
+                            $ven = $product['ven'];
+                        }
+                        echo '
+                        <div class="card" onclick="viewDetail(\'' .$id. '\')">
+                            <figure class="card-image">
+                                <img src= "' . $img . '" alt="itemTest">
+                                <div class="card-image-overlay">
+                                    <button class="view-detail-btn border-btn">
+                                        <p class="text-bold">View Details</p>
+                                    </button>
+                                </div>
+                            </figure>
+    
+                            <div class="card-info">
+                                <div class="card-info-detail">
+                                    <p class="text-sub card-info-detail-vendor">' . $ven . '</p>
+                                    <p class="text-para card-info-detail-name">' . $name . '</p>
+                                </div>
+                                <div class="card-info-price">
+                                    <p class="text-bold">$' . $price . '</p>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                        
+                    ?>
                 <div id="1" class="card">
                     <figure class="card-image">
                         <img src="./img/itemTest.png" alt="itemTest">
@@ -258,21 +298,21 @@
 
         <section id = "filter-category">
             <div id = "filter-category-info">
-                <form id = "filter-category-info-form" action="#">
+                <form id = "filter-category-info-form" action="#category">
                     <p class="text-para filter-category-info-heading">Sort by</p>
-                    <input type="radio" id = "category-sort-price" name = "filter-category-sort">
+                    <input type="radio" id = "category-sort-price" name = "filter-category-sort" value="price">
                     <label for="category-sort-price" class="text-para">Price</label>
 
-                    <input type="radio" id = "category-sort-name" name = "filter-category-sort">
+                    <input type="radio" id = "category-sort-name" name = "filter-category-sort" value="name">
                     <label for="category-sort-name" class="text-para">Name</label>
 
-                    <input type="radio" id = "category-sort-newest" name = "filter-category-sort">
+                    <input type="radio" id = "category-sort-newest" name = "filter-category-sort" value="newest">
                     <label for="category-sort-price" class="text-para">Newest</label>
                 </form>
                 <div id = "filter-category-btn-list">
                     <button class="border-btn" id="close-filter-btn"><p class="text-para">Close</p></button>
                         
-                    <input type="submit" name ="submit-filter-btn" id="submit-filter-btn" class="bg-btn text-para" value="Go" form="filter-category-info-form">
+                    <input type="submit" id="submit-filter-btn" class="bg-btn text-para" value="Go" form="filter-category-info-form">
                 </div>
             </div>
             <div id = "filter-category-background"></div>
@@ -282,13 +322,13 @@
             <div id="category-heading">
                 <h2>All Products</h2>
 
-                <div id="category-heading-search">
+                <form id="category-heading-search" method="GET" action="#category">
                     <input type="text" name="search-bar" id="search-bar" placeholder="Search">
 
                     <div id="category-heading-search-icon">
                         <img src="img/icon/Search.png" alt="magnifying glass">
                     </div>
-                </div>
+                </form>
 
                 <button id="filter-btn">
                     <img src="./img/icon/filter.svg" alt="filter">

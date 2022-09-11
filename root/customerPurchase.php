@@ -43,44 +43,37 @@
             <form id="customer-purchase-info-detail" method='post' action="add-order.php">
 
                 <div id="customer-purchase-info-detail-name" class="customer-purchase-info-detail-item">
-                    <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-name">Username*</label>
+                    <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-name">Name*</label>
 
-                    <input type="text" id="purchase-customer-name" class="text-para customer-purchase-info-detail-input" name="purchaseUsername" 
-                    placeholder="E.g: Tony Diggory" value="ok">
+                    <input type="text" id="purchase-customer-name" class="text-para customer-purchase-info-detail-input" name="purchase-customer-name" 
+                    placeholder="E.g: Tony Diggory">
                 </div>
 
-                <!-- <div id="customer-purchase-info-detail-phone" class="customer-purchase-info-detail-item">
+                <div id="customer-purchase-info-detail-phone" class="customer-purchase-info-detail-item">
                     <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-phone">Phone*</label>
 
-                    <input type="number" id="purchase-customer-phone" class="text-para customer-purchase-info-detail-input" name="purchasePhone" 
+                    <input type="number" id="purchase-customer-phone" class="text-para customer-purchase-info-detail-input" name="purchase-customer-phone" 
                     placeholder="E.g: 091 234 5678">
                 </div>
-
-                <div id="customer-purchase-info-detail-email" class="customer-purchase-info-detail-item">
-                    <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-email">Email*</label>
-
-                    <input type="email" id="purchase-customer-email" class="text-para customer-purchase-info-detail-input" name="purchaseEmail" 
-                    placeholder="E.g: s1234567@gmail.com">
-                </div> -->
 
                 <div id="customer-purchase-info-detail-location" class="customer-purchase-info-detail-item">
                     <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-location">Address*</label>
 
-                    <input type="text" id="purchase-customer-location" class="text-para customer-purchase-info-detail-input" name="purchaseLocation" 
-                    placeholder="E.g: Handi Resco Building, 521 Kim Ma, Ha Noi" value="<?php echo $_SESSION['current_user']['address']?>" disabled>
+                    <input type="text" id="purchase-customer-location" class="text-para customer-purchase-info-detail-input" name="purchase-customer-location" 
+                    placeholder="E.g: Handi Resco Building, 521 Kim Ma, Ha Noi">
                 </div>
 
                 <div id="customer-purchase-info-detail-cartId" class="customer-purchase-info-detail-item">
                     <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-cartId">CartID</label>
 
-                    <input type="text" id="purchase-customer-cartId" class="text-para customer-purchase-info-detail-input" name="purchaseCartId" disabled>
+                    <input type="text" id="purchase-customer-cartId" class="text-para customer-purchase-info-detail-input" name="purchase-customer-cartId" readonly>
                 </div>
 
-                <!-- <div id="customer-purchase-info-detail-note" class="customer-purchase-info-detail-item">
+                <div id="customer-purchase-info-detail-note" class="customer-purchase-info-detail-item">
                     <label class="text-bold customer-purchase-info-detail-label" for="purchase-customer-note">Note</label>
 
                     <textarea name="purchase-customer-note" id="purchase-customer-note" class="text-para" placeholder="E.g: 10th Floor, Tower A"></textarea>
-                </div> -->
+                </div>
             </form>
         </section>
 
@@ -89,7 +82,6 @@
                 <h3 id="customer-purchase-payment-method-heading">Payment Method</h3>
 
                 <div class="customer-purchase-payment-method-option">
-                    <!-- <div class="customer-purchase-payment-method-option-thumb"></div> -->
                     <p class="text-para">Cash payment when receiving goods</p>
                 </div>
             </div>
@@ -131,8 +123,7 @@
                 </div>
 
                 <div id="purchase-payment-btn-list">
-                    <button class="customer-purchase-buy-btn border-btn" type="submit" name="purchase">
-                    <!-- <button class="customer-purchase-buy-btn border-btn" type="submit" form="customer-purchase-info-detail" name="purchase"> -->
+                    <button class="customer-purchase-buy-btn border-btn">
                         <p class="text-bold">Purchase Orders</p>
                     </button>
 
