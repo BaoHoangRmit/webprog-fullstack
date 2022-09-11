@@ -70,4 +70,5 @@ footer img {
 .footer_menu li {
     margin: 0 20px;
     font-size: 14px;
+    list-style: none;
 }
