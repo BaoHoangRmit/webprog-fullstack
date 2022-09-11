@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    margin-top: 55px;
+    text-align: center;
+    font-size: 37px;
+}
+
+.container {
+    margin-top: 50px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+}
+
+.a-link:link, .a-link:visited {
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.a-link:hover {
+    background-color: gray;
+    color: black;
+}
