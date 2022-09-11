@@ -143,9 +143,9 @@
                         } 
                     }
                     
-                    echo "<figure id='product-detail-image'>";
+                    echo "<div id = 'product-detail-image-outsider'><figure id='product-detail-image'>";
                     echo "<img id='product-detail-image-img' src='" . $img . "' alt='" . $name . "'>";
-                    echo "</figure>";
+                    echo "</figure></div>";
                     echo "<div id='product-detail-info'>";
                     echo "<h2 id='product-detail-info-name'>" . $name . "</h2>";
                     echo "<p id='product-detail-info-vendor' class='text-bold'>" . $ven . "</p>";
