@@ -25,48 +25,6 @@
 
     $_SESSION['allProducts'] = read_product_file();
     $_SESSION['displayProducts'] = [];
-    
-    // if (isset($_GET['search-bar']) && !empty($_GET['search-bar'])) {
-    //     $search = $_GET['search-bar'];
-    //     echo $search;
-    //     $products = $_SESSION['allProducts'];
-
-    //     $length = count($_SESSION['allProducts']);
-    //     for ($i=0; $i < $length; $i++) { 
-    //         echo "this is loop " . $i  . '<br>';
-    //         $products1 = $_SESSION['allProducts'];
-    //         $product = $_SESSION['allProducts'][$i];           
-    //         $num = 0;
-
-    //         foreach ($product as $key => $value) {
-    //             if ($num == 0) {
-    //                 $num++;
-    //                 continue;
-    //             }
-    //             if ($key == 'name' && strpos(strval($value), $search) !== false) {
-    //                 echo strpos(strval($value), $search) . '<br>';
-    //                 echo 'ok' . '<br>';
-    //                 break;
-    //             } else {
-    //                 array_splice($products, $i);
-    //                 echo 'remove array number ' . $i . '<br>';
-    //                 break;
-    //             }         
-    //         }
-    //     }
-
-    //     echo '<pre>';
-    //     print_r($products);
-    //     echo '</pre>';
-
-    //     unset($_SESSION['allProducts']);
-    //     $products[] = $product;
-    //     $_SESSION['allProducts'] = $products;
-
-    //     echo '<pre>';
-    //     print_r($_SESSION['allProducts']);
-    //     echo '</pre>';
-    // }
 
     $selected_func = 'name_cmp';
     if (isset($_GET['filter-category-sort']) && !empty($_GET['filter-category-sort'])) {       
@@ -219,6 +177,7 @@
                             $desc = $product['desc'];
                             $ven = $product['ven'];
                         }
+                        echo '';
                         echo '
                         <div class="card" onclick="viewDetail(\'' .$id. '\')">
                             <figure class="card-image">
@@ -391,11 +350,16 @@
                         <img src="img/icon/Search.png" alt="magnifying glass">
                     </div>
                 </form>
+                
+                <div class="filter-container">
+                    <button id="filter-btn">
+                        <img src="./img/icon/filter.svg" alt="filter">
+                        <p class="text-bold">Filter</p>
+                    </button>
 
-                <button id="filter-btn">
-                    <img src="./img/icon/filter.svg" alt="filter">
-                    <p class="text-bold">Filter</p>
-                </button>
+                    <a href="index.php#category" class="text-para">Clear</a>
+                </div>
+                
             </div>
 
             <div id="category-container">
@@ -406,11 +370,19 @@
                         if (isset($_SESSION['displayProducts'])) {
                             $_SESSION['allProducts'] = [];
                             $_SESSION['allProducts'] = $_SESSION['displayProducts'];
-                        }         
+                        }
+                        $searchVal = 'search-value';
+                        if (isset($_GET['search-bar']) && !empty($_GET['search-bar'])){
+                            $currentUrlCus = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                            $searchVal = parse_url($currentUrlCus);
+                            parse_str($searchVal['query'], $params);
+                            $searchVal = $params['search-bar'];
+                        }
 
                         $length = count($_SESSION['allProducts']);
                         for ($i=0; $i < $length; $i++) { 
                             $product = $_SESSION['allProducts'][$i];
+                            $check = 0;
                             foreach ($product as $key => $value) {
                                 $id = strval($product['id']);
                                 $name = $product['name'];
@@ -419,32 +391,43 @@
                                 $desc = $product['desc'];
                                 $ven = $product['ven'];
                             }
-                            echo "<div class=\"card\" onclick=\"viewDetail('itemFS" . $id . "')\">";
-                            echo "<figure class='card-image'>";
-                            echo "<img src='" . $img . "' alt='itemTest'>";
-                            echo "<div class='card-image-overlay'>";
-                            echo "<button class='view-detail-btn border-btn' onclick=\"viewDetail('itemFS". $id .  "')\">";
-                            echo "<p class='text-bold'>View Details</p>";
-                            echo "</button>";
-                            echo '</div>';
-                            echo '</figure>';
-
-                            echo "<div class='card-info'>";
-                            echo "<div class='card-info-detail'>";
-                            echo "<p class='text-sub card-info-detail-vendor'>" . $ven . "</p>";
-                            echo "<p class='text-para card-info-detail-name'>" . $name . "</p>";
-                            echo '</div>';
-                            echo "<div class='card-info-price'>";
-                            echo "<p class='text-bold'>$" . $price . "</p>";
-                            echo '</div>';
-                            echo '</div>';
-
-                            echo '</div>';
+                            if($searchVal == 'search-value'){
+                                $check = 1;
+                            }else{
+                                if(str_contains($name, $searchVal)){
+                                    $check = 1;
+                                }else{
+                                    $check = 0;
+                                }
+                            }
+                            if($check == 1){
+                                echo "<div class=\"card\" onclick=\"viewDetail('itemFS" . $id . "')\">";
+                                echo "<figure class='card-image'>";
+                                echo "<img src='" . $img . "' alt='itemTest'>";
+                                echo "<div class='card-image-overlay'>";
+                                echo "<button class='view-detail-btn border-btn' onclick=\"viewDetail('itemFS". $id .  "')\">";
+                                echo "<p class='text-bold'>View Details</p>";
+                                echo "</button>";
+                                echo '</div>';
+                                echo '</figure>';
+    
+                                echo "<div class='card-info'>";
+                                echo "<div class='card-info-detail'>";
+                                echo "<p class='text-sub card-info-detail-vendor'>" . $ven . "</p>";
+                                echo "<p class='text-para card-info-detail-name'>" . $name . "</p>";
+                                echo '</div>';
+                                echo "<div class='card-info-price'>";
+                                echo "<p class='text-bold'>$" . $price . "</p>";
+                                echo '</div>';
+                                echo '</div>';
+    
+                                echo '</div>';
+                            }
                         }
                         
                     ?>
-
-                    <div id="7" class="card">
+    
+                    <!-- <div id="17" class="card">
                         <figure class="card-image">
                             <img src="./img/itemTest.png" alt="itemTest">
                             <div class="card-image-overlay">
@@ -463,217 +446,7 @@
                                 <p class="text-bold">$454.00</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div id="8" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="9" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="10" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="11" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="12" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="13" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="14" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="15" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div id="16" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div id="17" class="card">
-                        <figure class="card-image">
-                            <img src="./img/itemTest.png" alt="itemTest">
-                            <div class="card-image-overlay">
-                                <button class="view-detail-btn border-btn">
-                                    <p class="text-bold">View Details</p>
-                                </button>
-                            </div>
-                        </figure>
-    
-                        <div class="card-info">
-                            <div class="card-info-detail">
-                                <p class="text-sub card-info-detail-vendor">Vendor</p>
-                                <p class="text-para card-info-detail-name">MisFit Ring</p>
-                            </div>
-                            <div class="card-info-price">
-                                <p class="text-bold">$454.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div id="category-extended-btn">
