@@ -61,14 +61,17 @@
                   // upload the file with new name
                   if (move_uploaded_file($_FILES["shipImg"]["tmp_name"], $new_target_file)) {
                     // echo "The file ". htmlspecialchars( basename( $_FILES["cusImg"]["name"])). " has been uploaded.";
-                    if (save_user_file()) {
-                      unset($_SESSION['registered']);
+                    // if (save_user_file()) {
+                    //   unset($_SESSION['registered']);
                       
-                      header('location: index.php');
-                    } else {
-                      $_SESSION['registered'] = 'You have not been registered';
-                      header('location: shipper-register-page.php');
-                    }
+                    //   header('location: index.php');
+                    // } else {
+                    //   $_SESSION['registered'] = 'You have not been registered';
+                    //   header('location: shipper-register-page.php');
+                    // }
+
+                    save_user_file();
+                    header('location: login-page.php');
 
                   } else {
                     $error = "Sorry, there was an error uploading your file.";

@@ -46,7 +46,7 @@
 
     if (isset($_SESSION['orders'])) {
         save_order_file();
-        $_SESSION['allOrders'] = read_order_file();
+        
         header('location: order-successful-page.php');
         exit();
     }

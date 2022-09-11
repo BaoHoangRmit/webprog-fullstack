@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include_once 'order-file-control.php';
+
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         if ($_SESSION['current_user']['role'] == 'customer') {
             header('location: index.php');
@@ -8,6 +10,19 @@
         }
     } else {
        header('location: login-page.php');
+    }
+
+    $_SESSION['allOrders'] = read_order_file();
+
+    $current_hub = $_SESSION['current_user']['hub'];
+    echo $current_hub;
+
+    $_SESSION['filterOrders'] = read_order_by_field('orderHub', $current_hub);
+
+    if (isset($_SESSION['filterOrders'])) {
+        echo '<pre>';
+        print_r($_SESSION['filterOrders']);
+        echo '</pre>';
     }
 ?>
 

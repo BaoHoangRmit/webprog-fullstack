@@ -64,4 +64,47 @@ function read_order_file() {
     return $orders_from_file;
 }
 
+// read all info of user with $p2 value in $p1 column
+function read_order_by_field($p1, $p2) {
+  $file_name = 'data/orders.csv';
+  $fp = fopen($file_name, 'r');
+
+  // first row -> field names
+  $first = fgetcsv($fp);
+  $orders_by_field = [];
+  $order_by_field = [];
+
+  while ($row = fgetcsv($fp)) {
+    $i = 0;
+    $check = 0;
+
+    foreach ($first as $col_name) {
+      if ($col_name == $p1 && $row[$i] !== $p2) {
+        $check = 1;
+        break;
+      } else {
+        $order_by_field[$col_name] = $row[$i];
+        if ($col_name == 'orderProductId') {
+          $order_by_field[$col_name] = explode(',', $order_by_field[$col_name]);
+        }
+        $i++;
+        $check = 0;
+      }	    
+    }
+
+    if ($check == 1) {
+      continue;
+    } else {
+      $orders_by_field[] = $order_by_field;
+      $order_by_field = [];
+    }
+    
+  }
+
+  // overwrite the session variable
+  // $_SESSION['users_by_field'] = $users_by_field;
+
+  return $orders_by_field;		
+}
+
 ?>

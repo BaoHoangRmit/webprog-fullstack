@@ -64,13 +64,16 @@
                       // upload the file with new name
                       if (move_uploaded_file($_FILES["cusImg"]["tmp_name"], $new_target_file)) {
                         // echo "The file ". htmlspecialchars( basename( $_FILES["cusImg"]["name"])). " has been uploaded.";
-                        if (save_user_file()) {
-                          unset($_SESSION['registered']);
-                          header('location: index.php');
-                        } else {
-                          $_SESSION['registered'] = 'You have not been registered';
-                          header('location: customer-register-page.php');
-                        }
+                        // if (save_user_file()) {
+                        //   $_SESSION['registered'] = 'You have not been registered';
+                        //   header('location: index.php');
+                        // } else {
+                        //   unset($_SESSION['registered']);
+                          
+                        //   header('location: customer-register-page.php');
+                        // }
+                        save_user_file();
+                        header('location: login-page.php');
 
                       } else {
                         $error = "Sorry, there was an error uploading your file.";
