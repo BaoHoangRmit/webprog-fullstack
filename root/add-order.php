@@ -18,7 +18,6 @@
     $sub_str = '';
 
     for ($i = 0; $i < strlen($str); $i++){
-        echo $str[$i] . ' ';
         $sub_str .= $str[$i];
 
         if (strlen($sub_str) == 10) {
@@ -27,18 +26,8 @@
         }
     }
 
-    echo '<br>';
-
-    for ($i=0; $i < count($productIds); $i++) { 
-        echo $productIds[$i] . ' ';
-    }
 
     $orderId = round(microtime(true));
-
-    // for ($i=0; $i < count($_SESSION['hubs']); $i++) { 
-    //     echo $_SESSION['hubs'][$i];
-    // }
-
 
     $hub_names = [];
     if (is_array($_SESSION['hubs'])) {
@@ -49,13 +38,8 @@
         }
     }
 
-    for ($i=0; $i < count($hub_names); $i++) { 
-        echo $hub_names[$i] . ' ';
-    }
-
     $random_key = array_rand($hub_names);
     $random_hub = $hub_names[$random_key];
-    echo gettype($random_hub);
 
     $order = [
         'orderId' => $orderId,
@@ -67,13 +51,10 @@
         'createdTime' => date('d-m-Y h:i:s'),
     ];
 
-    $_SESSION['orders'][] = $order;
+    $_SESSION['orders'] = $order;
 
-    // if (isset($_SESSION['orders'])) {
-    //     save_order_file();
-    //     echo '<pre>';
-    //     print_r($_SESSION['orders']);
-    //     echo '</pre>';
-    // }
+    if (isset($_SESSION['orders'])) {
+        save_order_file();
+    }
 
 ?>

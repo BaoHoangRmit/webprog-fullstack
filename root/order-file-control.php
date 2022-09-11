@@ -16,14 +16,18 @@ function save_order_file() {
       $fpw = fopen($file_name, 'w');
       fputcsv($fpw, $fields);
     }
+
+    $tmp = [];
       
-    if (is_array($_SESSION['orders'])) {
-      foreach ($_SESSION['orders'] as $order) {
-        // for the sizes -> store the with comma seperated
-        $order['orderProductId'] = implode(',', $order['orderProductId']);
-        fputcsv($fp, $order);
+    if (count($_SESSION['orders']) != 0) {
+      $_SESSION['orders']['orderProductId'] = implode(',', $_SESSION['orders']['orderProductId']);
+      foreach($_SESSION['orders'] as $key => $value){
+        echo $value . '<br>';
+        array_push($tmp, $value);
       }
-    }
+      fputcsv($fp, $tmp);
+      }
+    fclose($fp);
     return 1;
 }
 
