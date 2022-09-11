@@ -65,4 +65,44 @@ function read_product_file() {
     return $products_from_file;
 }
 
+// read all info of user with $p2 value in $p1 column
+function read_product_by_field($p1, $p2) {
+  $file_name = 'data/products.csv';
+  $fp = fopen($file_name, 'r');
+
+  // first row -> field names
+  $first = fgetcsv($fp);
+  $products_by_field = [];
+  $product_by_field = [];
+
+  while ($row = fgetcsv($fp)) {
+    $i = 0;
+    $check = 0;
+
+    foreach ($first as $col_name) {
+      if ($col_name == $p1 && $row[$i] !== $p2) {
+        $check = 1;
+        break;
+      } else {
+        $product_by_field[$col_name] = $row[$i];
+        $i++;
+        $check = 0;
+      }	    
+    }
+
+    if ($check == 1) {
+      continue;
+    } else {
+      $products_by_field[] = $product_by_field;
+      $product_by_field = [];
+    }
+    
+  }
+
+  // overwrite the session variable
+  // $_SESSION['users_by_field'] = $users_by_field;
+
+  return $products_by_field;		
+}
+
 ?>
