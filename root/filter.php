@@ -12,7 +12,7 @@
 
 	// CREATED_TIME COMPARISON
 	function created_time_cmp($p1, $p2) {
-		return strtotime($p1['createdTime']) - strtotime($p2['createTime']);
+		return strtotime($p2['createTime']) - strtotime($p1['createdTime']);
 	}
 
     // function search_by_name($) {
@@ -24,7 +24,7 @@
     $mapping = [
 		'name' => 'name_cmp',
 		'price' => 'price_cmp',
-		'createTime' => 'created_time_cmp'
+		'createdTime' => 'created_time_cmp'
 	];
 
     // if (isset($_GET['compare_by']) && !empty($_GET['compare_by'])) {

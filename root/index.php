@@ -26,10 +26,11 @@
     $_SESSION['allProducts'] = read_product_file();
     $_SESSION['displayProducts'] = [];
 
-    if (isset($_GET['compare_by']) && !empty($_GET['compare_by'])) {       
-		if (array_key_exists($_GET['compare_by'], $mapping)) {
-			$selected_func = $mapping[$_GET['compare_by']];
-            usort($_SESSION['allProducts'], $selected_func);
+    $selected_func = 'name_cmp';
+    if (isset($_GET['filter-category-sort']) && !empty($_GET['filter-category-sort'])) {       
+		if (array_key_exists($_GET['filter-category-sort'], $mapping)) {
+			$selected_func = $mapping[$_GET['filter-category-sort']];
+            
             // echo '<pre>';
             // print_r($_SESSION['displayProducts']);
             // echo '</pre>';
@@ -41,6 +42,7 @@
 	} else {
         unset($_SESSION['displayProducts']);
     }
+    usort($_SESSION['allProducts'], $selected_func);
     
 ?>
 
@@ -162,6 +164,11 @@
             <div id="suggestion-list" class="list-horizontal">
 
                 <?php 
+                    if (isset($_SESSION['displayProducts'])) {
+                        $_SESSION['allProducts'] = [];
+                        $_SESSION['allProducts'] = $_SESSION['displayProducts'];
+                    }   
+
                     $length = count($_SESSION['allProducts']);
                     if($length > 5){
                         $length = 5;
@@ -325,7 +332,7 @@
                     <input type="radio" id = "category-sort-name" name = "filter-category-sort" value="name">
                     <label for="category-sort-name" class="text-para">Name</label>
 
-                    <input type="radio" id = "category-sort-newest" name = "filter-category-sort" value="newest">
+                    <input type="radio" id = "category-sort-newest" name = "filter-category-sort" value="createdTime">
                     <label for="category-sort-price" class="text-para">Newest</label>
                 </form>
                 <div id = "filter-category-btn-list">
