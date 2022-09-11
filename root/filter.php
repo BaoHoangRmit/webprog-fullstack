@@ -12,7 +12,7 @@
 
 	// CREATED_TIME COMPARISON
 	function created_time_cmp($p1, $p2) {
-		return strtotime($p2['createTime']) - strtotime($p1['createdTime']);
+		return strtotime($p2['createdTime']) - strtotime($p1['createdTime']);
 	}
 
     // function search_by_name($) {
