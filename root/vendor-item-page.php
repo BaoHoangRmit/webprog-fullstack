@@ -62,7 +62,7 @@
         </div>
 
         <!-- All Products -->
-        <div class="row">
+        <div class="grid-container">
             <?php 
                 $length = count($_SESSION['allProducts']);
                 for ($i=0; $i < $length; $i++) { 
@@ -74,32 +74,16 @@
                         $img = $product['img'];
                         $desc = $product['desc'];
                     }
-                    echo "<div class='column'>";
-                    echo "<div class='card'>";
-                    echo "<h2 class='card-header'>" . $id . "</h2>";
+                    echo "<div class='grid-item'>";
+                    echo "<p class='item-id'>" . $id . "</p>";
                     echo "<a href='#'><img class='product-img' src='" . $img . "' alt='product image'></a>";
-                    echo "<div class='card-text'>";
-                    echo "<h4 class='product-name'>" . $name . "</h4>";
-                    echo "<p><small>" . $price . "$</small></p>";
+                    echo "<p class='product-name'>" . $name . "</p>";
+                    echo "<p class='price'>" . $price . "$</p>";
                     echo "<p class='description'>" . $desc . "</p>";
-                    echo '</div>';
-                    echo '</div>';
                     echo '</div>';
                 }
                 
             ?>
-            <!-- <div class="column">
-                <div class="card">
-                    <h2 class="card-header">#123456</h2>
-                    <a href="#"><img class="product-img" src="./img/iphone.png" alt="product image"></a>
-                    <div class="card-text">
-                        <h4 class="product-name">iPhone</h4>
-                        <p><small>$200</small></p>
-                        <p class="description">The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface.
-                        The iPhone runs the iOS operating system, and in 2021 when the iPhone 13 was introduced, it offered up to 1 TB of storage and a 12-megapixel camera.</p>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </main>
 

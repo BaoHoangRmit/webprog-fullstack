@@ -9,68 +9,13 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .title {
     text-align: center;
     margin: 30px 0;
     font-weight: 500;
-}
-
-.description {
-    font-size: 70%;
-    font-style: italic;
-}
-
-.row {
-    margin: 0 50px;
-}
-
-.column {
-    float: left;
-    width: 33%;
-    padding: 0 10px;
-    margin: 10px 0;
-}
-
-.card {
-    border-style: solid;
-    border-color: lightgrey;
-    border-width: 2px;
-}
-
-.card-header {
-    font-weight: 500;
-    margin: 10px 20px;
-}
-
-.product-img {
-    display: block;
-    max-width: 40%;
-    min-width: 25%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.card-text {
-    text-align: center;
-}
-
-.product-name {
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.description {
-    text-align: justify;
-    padding: 20px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 .add-btn {
@@ -95,17 +40,62 @@ body {
     color: black;
 }
 
-@media screen and (max-width: 1023px) {
-    .column {
-        width: 50%;
-        display: block;
-    }
+.grid-container {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    background-color: white;
+    padding: 10px;
+    gap: 30px;
+    margin: 3%;
 }
 
-@media screen and (max-width: 767px) {
-    .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #808080;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.product-img {
+    width: 200px;
+    height: auto;
+}
+
+.item-id {
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.product-name {
+    font-size: 30px;
+}
+
+.price {
+    font-size: 15px;
+    color:darkslategrey;
+    font-style: italic;
+}
+
+.description {
+    text-align: justify;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 1023px){
+	.grid-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding: 10px;
+      }
+}
+
+@media screen and (max-width: 767px){
+	.grid-container {
+      display: grid;
+      grid-template-columns: auto;
+      padding: 10px;
+      }
 }
