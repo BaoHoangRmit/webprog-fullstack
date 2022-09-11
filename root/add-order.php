@@ -4,15 +4,6 @@
     include_once 'get-hub.php';
     include_once 'order-file-control.php';
 
-    if (isset($_POST['addOrder'])) {
-        echo 'ok';
-    }
-
-    echo $_POST['purchase-customer-name'] . '<br>';
-    echo $_POST['purchase-customer-phone'] . '<br>';
-    echo $_POST['purchase-customer-location'] . '<br>';
-    echo $_POST['purchase-customer-cartId'] . '<br>';
-
     $str = $_POST['purchase-customer-cartId'];
     $productIds = [];
     $sub_str = '';
@@ -55,6 +46,8 @@
 
     if (isset($_SESSION['orders'])) {
         save_order_file();
+        
+        header('location: order-successful-page.php');
+        exit();
     }
-
 ?>

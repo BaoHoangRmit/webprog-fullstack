@@ -41,7 +41,8 @@ const isValidPrice = password => {
 }
 
 const isValidOther = other => {
-    const reOther = /^([a-zA-Z0-9 !@#$%^&*]+){1,500}$/;
+    // const reOther = /^([a-zA-Z0-9 !@#$%^&*]+){1,500}$/;
+    const reOther = /^([a-zA-Z0-9 :,.\-\\?\\(\\)!@#$%^&*]+){5,500}$/;
     return reOther.test(String(other));
 }
 
@@ -64,7 +65,7 @@ const validateInputs = () => {
     if(proPriceValue === '') {
         setError(proPrice, 'Price is required');
     } else if (!isValidPrice(proPriceValue)) {
-        setError(proPrice, 'Provide a valid price (number with maximum 2 number after decimal)');
+        setError(proPrice, 'Provide a valid price (number with 2 number after decimal)');
     }else {
         check++;
         setSuccess(proPrice);

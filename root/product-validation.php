@@ -18,7 +18,8 @@ function check_product_price($p1) {
 }
 
 function check_product_desc($p1) {
-    $product_desc_pattern = "/^([a-zA-Z0-9 !@#$%^&*]+){1,500}$/";
+    // $product_desc_pattern = "/^([a-zA-Z0-9 !@#$%^&*]+){1,500}$/";
+    $product_desc_pattern = "/^([a-zA-Z0-9 :,.\-\?\(\)!@#$%^&*]+){5,500}$/";
     if (preg_match($product_desc_pattern, strval($p1))) {
         return 1;
     } else return 0;
