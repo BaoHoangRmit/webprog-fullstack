@@ -62,9 +62,5 @@
     <?php
         include_once 'layout/footer.html';
     ?>
-
-    <!-- JS -->
-    <script src="./js/customerMain.js"></script>
-    <script src="./js/customerHome.js"></script>
 </body>
 </html>

@@ -29,7 +29,6 @@
 	<?php include_once 'layout/header.php'; ?>
 
 	<main>
-		<p>Not filtering js - still register sucess</p>
 		<div class="register-form">
 			<form id="register-form" method="post" action="shipper-register.php" enctype="multipart/form-data">
 				<h1>Sign Up</h1>
@@ -90,7 +89,7 @@
 					</div>
 				</div>
 
-				<button type="submit" name="register">Register</button>
+				<button type="submit" name="register" style="cursor: pointer;">Register</button>
 			</form>
 		</div>
 	</main>
