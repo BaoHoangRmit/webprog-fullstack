@@ -123,7 +123,7 @@
                 </div>
 
                 <div id="purchase-payment-btn-list">
-                    <button class="customer-purchase-buy-btn border-btn">
+                    <button class="customer-purchase-buy-btn border-btn" name='addOrder'>
                         <p class="text-bold">Purchase Orders</p>
                     </button>
 

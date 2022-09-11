@@ -25,17 +25,54 @@
 
     $_SESSION['allProducts'] = read_product_file();
     $_SESSION['displayProducts'] = [];
+    
+    // if (isset($_GET['search-bar']) && !empty($_GET['search-bar'])) {
+    //     $search = $_GET['search-bar'];
+    //     echo $search;
+    //     $products = $_SESSION['allProducts'];
+
+    //     $length = count($_SESSION['allProducts']);
+    //     for ($i=0; $i < $length; $i++) { 
+    //         echo "this is loop " . $i  . '<br>';
+    //         $products1 = $_SESSION['allProducts'];
+    //         $product = $_SESSION['allProducts'][$i];           
+    //         $num = 0;
+
+    //         foreach ($product as $key => $value) {
+    //             if ($num == 0) {
+    //                 $num++;
+    //                 continue;
+    //             }
+    //             if ($key == 'name' && strpos(strval($value), $search) !== false) {
+    //                 echo strpos(strval($value), $search) . '<br>';
+    //                 echo 'ok' . '<br>';
+    //                 break;
+    //             } else {
+    //                 array_splice($products, $i);
+    //                 echo 'remove array number ' . $i . '<br>';
+    //                 break;
+    //             }         
+    //         }
+    //     }
+
+    //     echo '<pre>';
+    //     print_r($products);
+    //     echo '</pre>';
+
+    //     unset($_SESSION['allProducts']);
+    //     $products[] = $product;
+    //     $_SESSION['allProducts'] = $products;
+
+    //     echo '<pre>';
+    //     print_r($_SESSION['allProducts']);
+    //     echo '</pre>';
+    // }
 
     $selected_func = 'name_cmp';
     if (isset($_GET['filter-category-sort']) && !empty($_GET['filter-category-sort'])) {       
 		if (array_key_exists($_GET['filter-category-sort'], $mapping)) {
 			$selected_func = $mapping[$_GET['filter-category-sort']];
-            
-            // echo '<pre>';
-            // print_r($_SESSION['displayProducts']);
-            // echo '</pre>';
             unset($_SESSION['displayProducts']);
-            echo 'ok';
 		} else {
             unset($_SESSION['displayProducts']);
         }
@@ -43,7 +80,6 @@
         unset($_SESSION['displayProducts']);
     }
     usort($_SESSION['allProducts'], $selected_func);
-    
 ?>
 
 <!DOCTYPE html>

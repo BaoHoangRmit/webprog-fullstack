@@ -1,5 +1,6 @@
 <?php 
-
+	// session_start();
+	
     // NAME COMPARISON
 	function name_cmp($p1, $p2) {
 		return strcmp($p1['name'], $p2['name']);
@@ -14,12 +15,6 @@
 	function created_time_cmp($p1, $p2) {
 		return strtotime($p2['createdTime']) - strtotime($p1['createdTime']);
 	}
-
-    // function search_by_name($) {
-
-    // }
-
-    // session_start();
 
     $mapping = [
 		'name' => 'name_cmp',

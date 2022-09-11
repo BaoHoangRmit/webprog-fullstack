@@ -6,7 +6,7 @@ function save_order_file() {
     $fp = fopen($file_name, 'a');
 
     // no id
-    $fields = ['id', 'name', 'price', 'img', 'desc', 'ven', 'createdTime'];
+    $fields = ['orderId', 'orderHub', 'orderName', 'orderAddress', 'orderStatus', 'orderProductId', 'createdTime'];
 
     $fpr = fopen($file_name, 'r');     
     $first = fgetcsv($fpr);
@@ -17,18 +17,18 @@ function save_order_file() {
       fputcsv($fpw, $fields);
     }
       
-    if (is_array($_SESSION['products'])) {
-      foreach ($_SESSION['products'] as $user) {
+    if (is_array($_SESSION['orders'])) {
+      foreach ($_SESSION['orders'] as $order) {
         // for the sizes -> store the with comma seperated
-        // $product['sizes'] = implode(',', $product['sizes']);
-        fputcsv($fp, $user);
+        $order['orderProductId'] = implode(',', $order['orderProductId']);
+        fputcsv($fp, $order);
       }
     }
     return 1;
 }
 
 function read_order_file() {
-    $file_name = 'data/products.csv';
+    $file_name = 'data/orders.csv';
     $fp = fopen($file_name, 'r');
 
     // first row -> field names
