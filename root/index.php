@@ -21,8 +21,27 @@
     //     echo 'no cookie';
     // }
     include_once 'product-file-control.php';
+    include_once 'filter.php';
 
     $_SESSION['allProducts'] = read_product_file();
+    $_SESSION['displayProducts'] = [];
+
+    if (isset($_GET['compare_by']) && !empty($_GET['compare_by'])) {       
+		if (array_key_exists($_GET['compare_by'], $mapping)) {
+			$selected_func = $mapping[$_GET['compare_by']];
+            usort($_SESSION['allProducts'], $selected_func);
+            // echo '<pre>';
+            // print_r($_SESSION['displayProducts']);
+            // echo '</pre>';
+            unset($_SESSION['displayProducts']);
+            echo 'ok';
+		} else {
+            unset($_SESSION['displayProducts']);
+        }
+	} else {
+        unset($_SESSION['displayProducts']);
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -301,6 +320,11 @@
 
                 <div id="category-list" class="list-vertical">
                     <?php 
+                        if (isset($_SESSION['displayProducts'])) {
+                            $_SESSION['allProducts'] = [];
+                            $_SESSION['allProducts'] = $_SESSION['displayProducts'];
+                        }         
+
                         $length = count($_SESSION['allProducts']);
                         for ($i=0; $i < $length; $i++) { 
                             $product = $_SESSION['allProducts'][$i];
